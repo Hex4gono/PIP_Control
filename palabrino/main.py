@@ -8,7 +8,7 @@ class led:
     def __init__(self, pin):
         self.pin = pin #posicion [x, y]
         self.port = board.digital[pin]
-        self.state = 0
+        self.state = 2
     
                 
         
