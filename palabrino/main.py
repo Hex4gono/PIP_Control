@@ -3,10 +3,12 @@ import pyfirmata
 import interfaz
 
 board = pyfirmata.ArduinoMega('COM7')
+it = pyfirmata.util.Iterator(board)
+it.start()
 
 class led:
     def __init__(self, pin):
-        self.pin = pin #posicion [x, y]
+        self.pin = pin
         self.port = board.digital[pin]
         self.state = 2
     
