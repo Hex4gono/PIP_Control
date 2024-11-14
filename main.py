@@ -1,12 +1,20 @@
 import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow
 from PyQt5.QtCore import pyqtSlot
+import json
+import serial # type: ignore
+import pyautogui # type: ignore
+
 
 """
 from Archivo convertido con pyside2-uic archivo.ui > interfaz.py
 import nombre de la clase del archivo convertido
 """
-from menu import Ui_MainWindow
+from GUI.menu import Ui_MainWindow
+
+
+with open("data/controllers.json", "r") as file:
+    controles = json.load(file)
 
 class MainWindow(QMainWindow):  #Clase MainWindow heredada de QMainWindow, que es una clase de PyQt para crear la ventana principal de la app.
     def __init__(self): #constructor method. Se ejuecuta cuando la instancia de la clase es creada.
@@ -15,7 +23,7 @@ class MainWindow(QMainWindow):  #Clase MainWindow heredada de QMainWindow, que e
         self.ui.setupUi(self) #llama al método setupUi() de la instancia Ui_MainWindow, para setear los componenetes de la interfaz del usuario dentro de main window.
         self.ui.CerrarButton.clicked.connect(self.close)#Boton para cerrar
         #Haces un array con todos los caracteres seleccionables y despues la pones de accion en todos los combo box
-        caracteres = ['↑', '↓', '→', '←', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ',', '.', '-', '_', '!', '?', '@', '#', '$', '%', '^', '&', '*', '(', ')', '[', ']', '{', '}', '<', '>', '/', '\\', '|', '+', '=', ':', ';', '"', '\'']
+        caracteres = ['mouseUp','mouseDown','mouseRight','mouseLeft','up', 'down', 'right', 'left', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ',', '.', '-', '_', '!', '?', '@', '#', '$', '%', '^', '&', '*', '(', ')', '[', ']', '{', '}', '<', '>', '/', '\\', '|', '+', '=', ':', ';', '"', '\'']
         self.ui.XNegCar.addItems(caracteres)
         self.ui.XPosCar.addItems(caracteres)
         self.ui.YNegCar.addItems(caracteres)
@@ -28,8 +36,8 @@ class MainWindow(QMainWindow):  #Clase MainWindow heredada de QMainWindow, que e
         self.ui.Boton2Sel.addItems(caracteres)
         self.ui.Boton3Sel.addItems(caracteres)
         self.ui.Boton4Sel.addItems(caracteres)
-        configuraciones = ["configuracion 1", "configuracion 2", "configuracion 3", "configuracion 4", "configuracion 5", "configuracion 6", "configuracion 7", "configuracion 8", "configuracion 9"]
-        self.ui.comboBox.addItems(configuraciones)
+        self.ui.comboBox.addItems(controles.keys())
+        #self.ui.XNegCar.currentText() ="""
         
 if __name__ == "__main__": #checkea si el script está siendo ejecutado como el prog principal (no importado como un modulo).
     app = QApplication(sys.argv)    # Crea un Qt widget, la cual va ser nuestra ventana.
