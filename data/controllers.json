@@ -1,10 +1,33 @@
 {
     "default":
-    [
-        
-    ],  
+    {
+        "XNegCar": "a",
+        "XPosCar": "a",
+        "YNegCar": "a",
+        "YPosCar": "a",
+        "XNegCar_2": "a",
+        "XPosCar_2": "a",
+        "YNegCar_2": "a",
+        "YPosCar_2": "a",
+        "Boton1Sel": "a",
+        "Boton2Sel": "a",
+        "Boton3Sel": "a",
+        "Boton4Sel": "a"
+    },  
     "example":
-    [
-        
-    ]
+    {
+        "XNegCar": "left",
+        "XPosCar": "right",
+        "YNegCar": "down",
+        "YPosCar": "up",
+        "XNegCar_2": "a",
+        "XPosCar_2": "d",
+        "YNegCar_2": "s",
+        "YPosCar_2": "w",
+        "Boton1Sel": "z",
+        "Boton2Sel": "x",
+        "Boton3Sel": "c",
+        "Boton4Sel": "v"
+
+    }
 }

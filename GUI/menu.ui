@@ -27,17 +27,17 @@
      <item>
       <layout class="QHBoxLayout" name="ConfigBox">
        <item>
-        <widget class="QComboBox" name="comboBox"/>
+        <widget class="QComboBox" name="controlesComboBox"/>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton_2">
+        <widget class="QPushButton" name="cargarButton">
          <property name="text">
           <string>Cargar</string>
          </property>
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton">
+        <widget class="QPushButton" name="guardarButton">
          <property name="text">
           <string>Guardar Actual</string>
          </property>
@@ -243,5 +243,25 @@
   </widget>
  </widget>
  <resources/>
- <connections/>
+ <connections>
+  <connection>
+   <sender>cargarButton</sender>
+   <signal>released()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>cargarControl()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>391</x>
+     <y>29</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>459</x>
+     <y>99</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>cargarControl()</slot>
+ </slots>
 </ui>
