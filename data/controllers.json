@@ -12,7 +12,11 @@
         "Boton1Sel": "a",
         "Boton2Sel": "a",
         "Boton3Sel": "a",
-        "Boton4Sel": "a"
+        "Boton4Sel": "a",
+        "Boton5Sel": "a",
+        "Boton6Sel": "a",
+        "Boton7Sel": "a",
+        "Boton8Sel": "a"
     },  
     "example":
     {
@@ -27,7 +31,11 @@
         "Boton1Sel": "z",
         "Boton2Sel": "x",
         "Boton3Sel": "c",
-        "Boton4Sel": "v"
+        "Boton4Sel": "v",
+        "Boton5Sel": "a",
+        "Boton6Sel": "a",
+        "Boton7Sel": "a",
+        "Boton8Sel": "a"
 
     }
 }

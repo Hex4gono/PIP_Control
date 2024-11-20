@@ -8,15 +8,15 @@ import pyautogui # type: ignore
 from GUI.menu import Ui_MainWindow
 
 # variables
-ArduinoPort = "COM2323"
+ArduinoPort = "COM8"
 with open("data/controllers.json", "r") as file:
     controles = json.load(file)
-"""
+
 serialInst = serial.Serial()
 serialInst.baudrate = 9600
 serialInst.port = ArduinoPort
 serialInst.open()
-"""
+
 
 
 
