@@ -16,6 +16,10 @@ from GUI.menu import Ui_MainWindow
 with open("data/controllers.json", "r") as file:
     controles = json.load(file)
 
+"""
+arduino = serial.Serial("COM8", 9600)
+arduino.Open()
+"""
 caracteres = ['mouseUp','mouseDown','mouseRight','mouseLeft','mouseClickLeft','mouseClickRight','up', 'down', 'right', 'left', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ',', '.', '-', '_', '!', '?', '@', '#', '$', '%', '^', '&', '*', '(', ')', '[', ']', '{', '}', '<', '>', '/', '\\', '|', '+', '=', ':', ';', '"', '\'']
 class MainWindow(QMainWindow):  #Clase MainWindow heredada de QMainWindow, que es una clase de PyQt para crear la ventana principal de la app.
     def __init__(self): #constructor method. Se ejuecuta cuando la instancia de la clase es creada.
@@ -39,8 +43,6 @@ class MainWindow(QMainWindow):  #Clase MainWindow heredada de QMainWindow, que e
             if tecla not in caracteres:
                 print("la tecla en el json no es valida")
                 break
-        print(controlActual)
-        print(controlActual["Boton1Sel"])
         claves = ["XNegCar", "XPosCar", "YNegCar", "YPosCar","XNegCar_2", "XPosCar_2", "YNegCar_2", "YPosCar_2","Boton1Sel", "Boton2Sel", "Boton3Sel", "Boton4Sel","Boton5Sel", "Boton6Sel", "Boton7Sel", "Boton8Sel"]
         for i in range(len(widgets)):
             widget = widgets[i]
