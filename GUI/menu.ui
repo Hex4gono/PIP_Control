@@ -77,7 +77,10 @@
          <item row="1" column="1">
           <widget class="QLabel" name="label">
            <property name="text">
-            <string>adasd</string>
+            <string/>
+           </property>
+           <property name="pixmap">
+            <pixmap>Descargas/Imagen-removebg-preview(2).png</pixmap>
            </property>
           </widget>
          </item>
@@ -115,6 +118,9 @@
            <property name="text">
             <string/>
            </property>
+           <property name="pixmap">
+            <pixmap>Descargas/Imagen-removebg-preview(2).png</pixmap>
+           </property>
           </widget>
          </item>
         </layout>
@@ -148,6 +154,20 @@
          <item>
           <widget class="QComboBox" name="Boton1Sel"/>
          </item>
+         <item>
+          <layout class="QVBoxLayout" name="Bot1Box_2">
+           <item>
+            <widget class="QLabel" name="Boton5txt">
+             <property name="text">
+              <string>Boton 5</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QComboBox" name="Boton5Sel"/>
+           </item>
+          </layout>
+         </item>
         </layout>
        </item>
        <item>
@@ -161,6 +181,20 @@
          </item>
          <item>
           <widget class="QComboBox" name="Boton2Sel"/>
+         </item>
+         <item>
+          <layout class="QVBoxLayout" name="Bot2Box_2">
+           <item>
+            <widget class="QLabel" name="Boton6txt">
+             <property name="text">
+              <string>Boton 6</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QComboBox" name="Boton6Sel"/>
+           </item>
+          </layout>
          </item>
         </layout>
        </item>
@@ -176,6 +210,20 @@
          <item>
           <widget class="QComboBox" name="Boton3Sel"/>
          </item>
+         <item>
+          <layout class="QVBoxLayout" name="Bot3Box_2">
+           <item>
+            <widget class="QLabel" name="Boton7txt">
+             <property name="text">
+              <string>Boton 7</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QComboBox" name="Boton7Sel"/>
+           </item>
+          </layout>
+         </item>
         </layout>
        </item>
        <item>
@@ -189,6 +237,20 @@
          </item>
          <item>
           <widget class="QComboBox" name="Boton4Sel"/>
+         </item>
+         <item>
+          <layout class="QVBoxLayout" name="Bot4Box_2">
+           <item>
+            <widget class="QLabel" name="Boton8txt">
+             <property name="text">
+              <string>Boton 8</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QComboBox" name="Boton8Sel"/>
+           </item>
+          </layout>
          </item>
         </layout>
        </item>
