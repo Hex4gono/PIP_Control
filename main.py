@@ -8,12 +8,15 @@ import pyautogui # type: ignore
 from GUI.menu import Ui_MainWindow
 
 # variables
+ArduinoPort = "COM2323"
 with open("data/controllers.json", "r") as file:
     controles = json.load(file)
+"""
 serialInst = serial.Serial()
 serialInst.baudrate = 9600
-serialInst.port = portVar
+serialInst.port = ArduinoPort
 serialInst.open()
+"""
 
 
 
@@ -44,11 +47,11 @@ class MainWindow(QMainWindow):  #Clase MainWindow heredada de QMainWindow, que e
 
         
     def cargarControl(self):
-        for tecla in controles.values():
+        controlActual = controles[self.ui.controlesComboBox.currentText()]
+        for tecla in controlActual.values():
             if tecla not in caracteres:
                 print("zarpado error we despues veo que hago")
                 break
-        controlActual = controles[self.ui.controlesComboBox.currentText()]
         print(controlActual)
         print(controlActual["Boton1Sel"])
         self.ui.XNegCar.currentText() == controlActual["XNegCar"]
