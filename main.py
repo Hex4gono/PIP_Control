@@ -50,22 +50,22 @@ class MainWindow(QMainWindow):  #Clase MainWindow heredada de QMainWindow, que e
         controlActual = controles[self.ui.controlesComboBox.currentText()]
         for tecla in controlActual.values():
             if tecla not in caracteres:
-                print("zarpado error we despues veo que hago")
+                print("la tecla en el json no es valida")
                 break
         print(controlActual)
         print(controlActual["Boton1Sel"])
         self.ui.XNegCar.currentText() == controlActual["XNegCar"]
-        self.ui.XPosCar.addItems(caracteres)
-        self.ui.YNegCar.addItems(caracteres)
-        self.ui.YPosCar.addItems(caracteres)
-        self.ui.XNegCar_2.addItems(caracteres)
-        self.ui.XPosCar_2.addItems(caracteres)
-        self.ui.YNegCar_2.addItems(caracteres)
-        self.ui.YPosCar_2.addItems(caracteres)
-        self.ui.Boton1Sel.addItems(caracteres)
-        self.ui.Boton2Sel.addItems(caracteres)
-        self.ui.Boton3Sel.addItems(caracteres)
-        self.ui.Boton4Sel.addItems(caracteres)
+        self.ui.XPosCar.currentText() == controlActual["XPosCar"]
+        self.ui.YNegCar.currentText() == controlActual["YNegCar"]
+        self.ui.YPosCar.currentText() == controlActual["YPosCar"]
+        self.ui.XNegCar_2.currentText() == controlActual["XNegCar_2"]
+        self.ui.XPosCar_2.currentText() == controlActual["XPosCar_2"]
+        self.ui.YNegCar_2.currentText() == controlActual["YNegCar_2"]
+        self.ui.YPosCar_2.currentText() == controlActual["YPosCar_2"]
+        self.ui.Boton1Sel.currentText() == controlActual["Boton1Sel"]
+        self.ui.Boton2Sel.currentText() == controlActual["Boton2Sel"]
+        self.ui.Boton3Sel.currentText() == controlActual["Boton3Sel"]
+        self.ui.Boton4Sel.currentText() == controlActual["Boton4Sel"]
         
         
 if __name__ == "__main__": #checkea si el script está siendo ejecutado como el prog principal (no importado como un modulo).
