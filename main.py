@@ -1,20 +1,22 @@
+#clases
 import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow
 from PyQt5.QtCore import pyqtSlot
 import json
 import serial # type: ignore
 import pyautogui # type: ignore
-
-
-"""
-from Archivo convertido con pyside2-uic archivo.ui > interfaz.py
-import nombre de la clase del archivo convertido
-"""
 from GUI.menu import Ui_MainWindow
 
-
+# variables
 with open("data/controllers.json", "r") as file:
     controles = json.load(file)
+serialInst = serial.Serial()
+serialInst.baudrate = 9600
+serialInst.port = portVar
+serialInst.open()
+
+
+
 
 caracteres = ['mouseUp','mouseDown','mouseRight','mouseLeft','mouseClickLeft','mouseClickRight','up', 'down', 'right', 'left', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ',', '.', '-', '_', '!', '?', '@', '#', '$', '%', '^', '&', '*', '(', ')', '[', ']', '{', '}', '<', '>', '/', '\\', '|', '+', '=', ':', ';', '"', '\'']
 class MainWindow(QMainWindow):  #Clase MainWindow heredada de QMainWindow, que es una clase de PyQt para crear la ventana principal de la app.
@@ -38,13 +40,18 @@ class MainWindow(QMainWindow):  #Clase MainWindow heredada de QMainWindow, que e
         self.ui.Boton3Sel.addItems(caracteres)
         self.ui.Boton4Sel.addItems(caracteres)
         self.ui.controlesComboBox.addItems(controles.keys())
+        print(controles)
+
         
     def cargarControl(self):
         for tecla in controles.values():
             if tecla not in caracteres:
                 print("zarpado error we despues veo que hago")
                 break
-        self.ui.XNegCar.addItems(caracteres)
+        controlActual = controles[self.ui.controlesComboBox.currentText()]
+        print(controlActual)
+        print(controlActual["Boton1Sel"])
+        self.ui.XNegCar.currentText() == controlActual["XNegCar"]
         self.ui.XPosCar.addItems(caracteres)
         self.ui.YNegCar.addItems(caracteres)
         self.ui.YPosCar.addItems(caracteres)
@@ -63,4 +70,9 @@ if __name__ == "__main__": #checkea si el script está siendo ejecutado como el 
     window = MainWindow() #crea una intancia de MainWindow 
     window.show()   # IMPORTANT!!!!! la ventanas estan ocultas por defecto.
     sys.exit(app.exec_()) # Start the event loop.
+    
+while True:
+	if serialInst.in_waiting:
+		packet = serialInst.readline()
+		print(packet.decode('utf').rstrip('\n'))
  
