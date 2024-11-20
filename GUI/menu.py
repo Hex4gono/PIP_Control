@@ -176,6 +176,7 @@ class Ui_MainWindow(object):
 
         self.retranslateUi(MainWindow)
         self.cargarButton.released.connect(MainWindow.cargarControl) # type: ignore
+        self.guardarButton.released.connect(MainWindow.guardarControl) # type: ignore
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):

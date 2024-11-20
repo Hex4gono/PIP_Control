@@ -322,8 +322,25 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>guardarButton</sender>
+   <signal>released()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>guardarControl()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>652</x>
+     <y>22</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>683</x>
+     <y>97</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>cargarControl()</slot>
+  <slot>guardarControl()</slot>
  </slots>
 </ui>
