@@ -32,6 +32,7 @@ class MainWindow(QMainWindow):  #Clase MainWindow heredada de QMainWindow, que e
             i.addItems(caracteres)
         self.ui.controlesComboBox.addItems(controles.keys())
         print(controles)
+        
     def cargarControl(self):
         controlActual = controles[self.ui.controlesComboBox.currentText()]
         for tecla in controlActual.values():
@@ -47,6 +48,11 @@ class MainWindow(QMainWindow):  #Clase MainWindow heredada de QMainWindow, que e
             valor = controlActual.get(clave)
             widget.setCurrentText(valor)
         
+    def guardarControl(self):
+        pass
+    
+    
+    
 if __name__ == "__main__": #checkea si el script está siendo ejecutado como el prog principal (no importado como un modulo).
     app = QApplication(sys.argv)    # Crea un Qt widget, la cual va ser nuestra ventana.
     window = MainWindow() #crea una intancia de MainWindow 
