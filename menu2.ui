@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QWidget" name="verticalLayoutWidget_5">
+    <property name="geometry">
+     <rect>
+      <x>7</x>
+      <y>10</y>
+      <width>791</width>
+      <height>441</height>
+     </rect>
+    </property>
+    <layout class="QVBoxLayout" name="AppLayout">
+     <item>
+      <layout class="QHBoxLayout" name="ConfigBox">
+       <item>
+        <widget class="QComboBox" name="controlesComboBox"/>
+       </item>
+       <item>
+        <widget class="QPushButton" name="cargarButton">
+         <property name="text">
+          <string>Cargar</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="guardarButton">
+         <property name="text">
+          <string>Guardar Actual</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <spacer name="verticalSpacer">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>40</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="JSBox">
+       <item>
+        <layout class="QGridLayout" name="JSI">
+         <item row="2" column="1">
+          <widget class="QComboBox" name="XPosCar"/>
+         </item>
+         <item row="0" column="1">
+          <widget class="QComboBox" name="XNegCar"/>
+         </item>
+         <item row="1" column="2">
+          <widget class="QComboBox" name="YNegCar"/>
+         </item>
+         <item row="1" column="0">
+          <widget class="QComboBox" name="YPosCar"/>
+         </item>
+         <item row="1" column="1">
+          <widget class="QLabel" name="label">
+           <property name="text">
+            <string/>
+           </property>
+           <property name="pixmap">
+            <pixmap>Descargas/Imagen-removebg-preview(2).png</pixmap>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <layout class="QGridLayout" name="JSI_2">
+         <item row="2" column="1">
+          <widget class="QComboBox" name="XPosCar_2"/>
+         </item>
+         <item row="1" column="0">
+          <widget class="QComboBox" name="YPosCar_2"/>
+         </item>
+         <item row="1" column="2">
+          <widget class="QComboBox" name="YNegCar_2"/>
+         </item>
+         <item row="0" column="1">
+          <widget class="QComboBox" name="XNegCar_2"/>
+         </item>
+         <item row="1" column="1">
+          <widget class="QLabel" name="label_2">
+           <property name="text">
+            <string/>
+           </property>
+           <property name="pixmap">
+            <pixmap>Descargas/Imagen-removebg-preview(2).png</pixmap>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <spacer name="verticalSpacer_3">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <property name="sizeHint" stdset="0">
+        <size>
+         <width>20</width>
+         <height>40</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="ButtonBox">
+       <item>
+        <layout class="QVBoxLayout" name="Bot1Box">
+         <item>
+          <widget class="QLabel" name="Boton1txt">
+           <property name="text">
+            <string>Boton 1</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="Boton1Sel"/>
+         </item>
+         <item>
+          <layout class="QVBoxLayout" name="Bot1Box_2">
+           <item>
+            <widget class="QLabel" name="Boton1txt_2">
+             <property name="text">
+              <string>Boton 5</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QComboBox" name="Boton1Sel_2"/>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="Bot2Box">
+         <item>
+          <widget class="QLabel" name="Boton2txt">
+           <property name="text">
+            <string>Boton 2</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="Boton2Sel"/>
+         </item>
+         <item>
+          <layout class="QVBoxLayout" name="Bot2Box_2">
+           <item>
+            <widget class="QLabel" name="Boton2txt_2">
+             <property name="text">
+              <string>Boton 6</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QComboBox" name="Boton2Sel_2"/>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="Bot3Box">
+         <item>
+          <widget class="QLabel" name="Boton3txt">
+           <property name="text">
+            <string>Boton 3</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="Boton3Sel"/>
+         </item>
+         <item>
+          <layout class="QVBoxLayout" name="Bot3Box_2">
+           <item>
+            <widget class="QLabel" name="Boton3txt_2">
+             <property name="text">
+              <string>Boton 7</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QComboBox" name="Boton3Sel_2"/>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <layout class="QVBoxLayout" name="Bot4Box">
+         <item>
+          <widget class="QLabel" name="Boton4txt">
+           <property name="text">
+            <string>Boton 4</string>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="Boton4Sel"/>
+         </item>
+         <item>
+          <layout class="QVBoxLayout" name="Bot4Box_2">
+           <item>
+            <widget class="QLabel" name="Boton4txt_2">
+             <property name="text">
+              <string>Boton 8</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QComboBox" name="Boton4Sel_2"/>
+           </item>
+          </layout>
+         </item>
+        </layout>
+       </item>
+      </layout>
+     </item>
+     <item>
+      <layout class="QHBoxLayout" name="CABox">
+       <item>
+        <spacer name="horizontalSpacer_2">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+       <item>
+        <widget class="QPushButton" name="CerrarButton">
+         <property name="text">
+          <string>Cerrar</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="AceptarButton">
+         <property name="text">
+          <string>Aceptar</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_3">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
+     </item>
+    </layout>
+   </widget>
+  </widget>
+ </widget>
+ <resources/>
+ <connections>
+  <connection>
+   <sender>cargarButton</sender>
+   <signal>released()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>cargarControl()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>391</x>
+     <y>29</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>459</x>
+     <y>99</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+ <slots>
+  <slot>cargarControl()</slot>
+ </slots>
+</ui>
