@@ -1,26 +1,26 @@
 import sys
-from PyQt5.QtWidgets import QApplication, QMainWindow
+from PyQt5.QtWidgets import QApplication, QMainWindow, QDialog
 from PyQt5.QtCore import pyqtSlot
 import json
 import serial # type: ignore
 import pyautogui # type: ignore
-
-
-"""
-from Archivo convertido con pyside2-uic archivo.ui > interfaz.py
-import nombre de la clase del archivo convertido
-"""
 from GUI.menu import Ui_MainWindow
-
+from GUI.nameprompt import Ui_Dialog
 
 with open("data/controllers.json", "r") as file:
     controles = json.load(file)
-
-"""
-arduino = serial.Serial("COM8", 9600)
-arduino.Open()
-"""
 caracteres = ['mouseUp','mouseDown','mouseRight','mouseLeft','mouseClickLeft','mouseClickRight','up', 'down', 'right', 'left', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ',', '.', '-', '_', '!', '?', '@', '#', '$', '%', '^', '&', '*', '(', ')', '[', ']', '{', '}', '<', '>', '/', '\\', '|', '+', '=', ':', ';', '"', '\'']
+class Dialog(QDialog):
+    def __init__(self):
+        super().__init__()
+        self.ui = Ui_Dialog()
+        self.ui.setupUi(self)
+        self.setWindowTitle('Ventana Secundaria')
+        self.setGeometry(300, 300, 250, 150)
+        self.ui.buttonBox
+    def aceptarguardar(self):
+     nombreconfig = self.ui.nombreguardar.text()
+     print(nombreconfig)
 class MainWindow(QMainWindow):  #Clase MainWindow heredada de QMainWindow, que es una clase de PyQt para crear la ventana principal de la app.
     def __init__(self): #constructor method. Se ejuecuta cuando la instancia de la clase es creada.
         super().__init__() #llama al constructor de la clase QMainWindow, para inicializar las funcionalidades básicas de la ventana principal de la app.
@@ -36,28 +36,31 @@ class MainWindow(QMainWindow):  #Clase MainWindow heredada de QMainWindow, que e
             i.addItems(caracteres)
         self.ui.controlesComboBox.addItems(controles.keys())
         print(controles)
-        
     def cargarControl(self):
         controlActual = controles[self.ui.controlesComboBox.currentText()]
         for tecla in controlActual.values():
             if tecla not in caracteres:
                 print("la tecla en el json no es valida")
                 break
+        print(controlActual)
+        print(controlActual["Boton1Sel"])
         claves = ["XNegCar", "XPosCar", "YNegCar", "YPosCar","XNegCar_2", "XPosCar_2", "YNegCar_2", "YPosCar_2","Boton1Sel", "Boton2Sel", "Boton3Sel", "Boton4Sel","Boton5Sel", "Boton6Sel", "Boton7Sel", "Boton8Sel"]
         for i in range(len(widgets)):
             widget = widgets[i]
             clave = claves[i]
             valor = controlActual.get(clave)
             widget.setCurrentText(valor)
-        
     def guardarControl(self):
-        pass
-    
-    
-    
+        print("me gusta la pa")
+        # Crear instancia del diálogo y abrirlo
+        dialogo = Dialog()  # Crear una instancia de Dialog
+        dialogo.exec_()  # Mostrar el diálogo de manera modal
+        print("me gusta la pa")
+
 if __name__ == "__main__": #checkea si el script está siendo ejecutado como el prog principal (no importado como un modulo).
     app = QApplication(sys.argv)    # Crea un Qt widget, la cual va ser nuestra ventana.
     window = MainWindow() #crea una intancia de MainWindow 
     window.show()   # IMPORTANT!!!!! la ventanas estan ocultas por defecto.
     sys.exit(app.exec_()) # Start the event loop.
- 
+  #
+  #
