@@ -32,7 +32,7 @@ class Dialog(QDialog):
         self.ui.setupUi(self)
         self.setWindowTitle('Ventana Secundaria')
         self.setGeometry(300, 300, 250, 150)
-        self.ui.buttonBox
+
         
     def aceptarguardar(self):
         nombreconfig = self.ui.nombreguardar.text()
