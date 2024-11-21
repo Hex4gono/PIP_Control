@@ -28,6 +28,9 @@ class Ui_MainWindow(object):
         self.controlesComboBox = QtWidgets.QComboBox(self.verticalLayoutWidget_5)
         self.controlesComboBox.setObjectName("controlesComboBox")
         self.ConfigBox.addWidget(self.controlesComboBox)
+        self.borrarButton = QtWidgets.QPushButton(self.verticalLayoutWidget_5)
+        self.borrarButton.setObjectName("borrarButton")
+        self.ConfigBox.addWidget(self.borrarButton)
         self.cargarButton = QtWidgets.QPushButton(self.verticalLayoutWidget_5)
         self.cargarButton.setObjectName("cargarButton")
         self.ConfigBox.addWidget(self.cargarButton)
@@ -177,11 +180,13 @@ class Ui_MainWindow(object):
         self.retranslateUi(MainWindow)
         self.cargarButton.released.connect(MainWindow.cargarControl) # type: ignore
         self.guardarButton.released.connect(MainWindow.guardarControl) # type: ignore
+        self.borrarButton.released.connect(MainWindow.eliminarControl) # type: ignore
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        self.borrarButton.setText(_translate("MainWindow", "Eliminar"))
         self.cargarButton.setText(_translate("MainWindow", "Cargar"))
         self.guardarButton.setText(_translate("MainWindow", "Guardar Actual"))
         self.Boton1txt.setText(_translate("MainWindow", "Boton 1"))

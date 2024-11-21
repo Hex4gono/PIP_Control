@@ -11,7 +11,20 @@ from GUI.promptconfirmar import Ui_ConfirmarDialog
 with open("data/controllers.json", "r") as file:
     controles = json.load(file)
 caracteres = ['mouseUp','mouseDown','mouseRight','mouseLeft','mouseClickLeft','mouseClickRight','up', 'down', 'right', 'left', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ',', '.', '-', '_', '!', '?', '@', '#', '$', '%', '^', '&', '*', '(', ')', '[', ']', '{', '}', '<', '>', '/', '\\', '|', '+', '=', ':', ';', '"', '\'']
-
+class ConfirmarDialog:
+    def __init__(self):
+        super().__init__()
+        self.ui = Ui_Dialog()
+        self.ui.setupUi(self)
+        self.ui.buttonBox
+        """
+        self.setWindowTitle('Ventana Secundaria')
+        self.setGeometry(300, 300, 250, 150)
+        """
+        
+    def eliminacionConfirmada(self):
+        pass
+    
 class Dialog(QDialog):
     def __init__(self):
         super().__init__()
@@ -50,6 +63,7 @@ class MainWindow(QMainWindow):  #Clase MainWindow heredada de QMainWindow, que e
         comboBox = self.ui.controlesComboBox
         comboBox.addItems(controles.keys())
         print(controles)
+        
     def cargarControl(self):
         controlActual = controles[self.ui.controlesComboBox.currentText()]
         for tecla in controlActual.values():
@@ -64,11 +78,18 @@ class MainWindow(QMainWindow):  #Clase MainWindow heredada de QMainWindow, que e
             clave = claves[i]
             valor = controlActual.get(clave)
             widget.setCurrentText(valor)
+            
     def guardarControl(self):
         print("me gusta la pa")
         # Crear instancia del diálogo y abrirlo
         dialogo = Dialog()  # Crear una instancia de Dialog
         dialogo.exec_()  # Mostrar el diálogo de manera modal
+        print("me gusta la pa")
+        
+    def eliminarControl(self):    
+        # Crear instancia del diálogo y abrirlo
+        pepe = ConfirmarDialog()  # Crear una instancia de Dialog
+        pepe.exec_()  # Mostrar el diálogo de manera modal
         print("me gusta la pa")
 
 if __name__ == "__main__": #checkea si el script está siendo ejecutado como el prog principal (no importado como un modulo).
