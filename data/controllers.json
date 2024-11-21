@@ -1,6 +1,5 @@
 {
-    "default":
-    {
+    "default": {
         "XNegCar": "a",
         "XPosCar": "a",
         "YNegCar": "a",
@@ -17,9 +16,8 @@
         "Boton6Sel": "a",
         "Boton7Sel": "a",
         "Boton8Sel": "a"
-    },  
-    "example":
-    {
+    },
+    "example": {
         "XNegCar": "left",
         "XPosCar": "right",
         "YNegCar": "down",
@@ -36,6 +34,5 @@
         "Boton6Sel": "a",
         "Boton7Sel": "a",
         "Boton8Sel": "a"
-
     }
 }

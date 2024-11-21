@@ -10,6 +10,7 @@ from GUI.nameprompt import Ui_Dialog
 with open("data/controllers.json", "r") as file:
     controles = json.load(file)
 caracteres = ['mouseUp','mouseDown','mouseRight','mouseLeft','mouseClickLeft','mouseClickRight','up', 'down', 'right', 'left', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ',', '.', '-', '_', '!', '?', '@', '#', '$', '%', '^', '&', '*', '(', ')', '[', ']', '{', '}', '<', '>', '/', '\\', '|', '+', '=', ':', ';', '"', '\'']
+
 class Dialog(QDialog):
     def __init__(self):
         super().__init__()
@@ -18,9 +19,16 @@ class Dialog(QDialog):
         self.setWindowTitle('Ventana Secundaria')
         self.setGeometry(300, 300, 250, 150)
         self.ui.buttonBox
+        
     def aceptarguardar(self):
-     nombreconfig = self.ui.nombreguardar.text()
-     print(nombreconfig)
+        nombreconfig = self.ui.nombreguardar.text()
+        x = {nombreconfig:{}}
+        for i in range(len(widgets)):
+            x[nombreconfig][widgets[i].objectName()] = widgets[i].currentText()
+        controles.update(x)
+        with open("data/controllers.json",'r+') as file:
+            json.dump(controles, file, indent = 4)
+
 class MainWindow(QMainWindow):  #Clase MainWindow heredada de QMainWindow, que es una clase de PyQt para crear la ventana principal de la app.
     def __init__(self): #constructor method. Se ejuecuta cuando la instancia de la clase es creada.
         super().__init__() #llama al constructor de la clase QMainWindow, para inicializar las funcionalidades básicas de la ventana principal de la app.
@@ -32,6 +40,7 @@ class MainWindow(QMainWindow):  #Clase MainWindow heredada de QMainWindow, que e
         #Haces un array con todos los caracteres seleccionables y despues la pones de accion en todos los combo box
         global widgets 
         widgets = [self.ui.XNegCar,self.ui.XPosCar,self.ui.YNegCar,self.ui.YPosCar,self.ui.XNegCar_2,self.ui.XPosCar_2,self.ui.YNegCar_2,self.ui.YPosCar_2,self.ui.Boton1Sel,self.ui.Boton2Sel,self.ui.Boton3Sel,self.ui.Boton4Sel,self.ui.Boton5Sel,self.ui.Boton6Sel,self.ui.Boton7Sel,self.ui.Boton8Sel]
+        print(widgets[0].objectName())
         for i in widgets:
             i.addItems(caracteres)
         self.ui.controlesComboBox.addItems(controles.keys())
@@ -62,5 +71,3 @@ if __name__ == "__main__": #checkea si el script está siendo ejecutado como el 
     window = MainWindow() #crea una intancia de MainWindow 
     window.show()   # IMPORTANT!!!!! la ventanas estan ocultas por defecto.
     sys.exit(app.exec_()) # Start the event loop.
-  #
-  #
