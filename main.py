@@ -6,6 +6,7 @@ import serial # type: ignore
 import pyautogui # type: ignore
 from GUI.menu import Ui_MainWindow
 from GUI.nameprompt import Ui_Dialog
+from GUI.promptconfirmar import Ui_ConfirmarDialog
 
 with open("data/controllers.json", "r") as file:
     controles = json.load(file)
@@ -28,6 +29,8 @@ class Dialog(QDialog):
         controles.update(x)
         with open("data/controllers.json",'r+') as file:
             json.dump(controles, file, indent = 4)
+        comboBox.removeItem
+        comboBox.addItem(controles.keys())
 
 class MainWindow(QMainWindow):  #Clase MainWindow heredada de QMainWindow, que es una clase de PyQt para crear la ventana principal de la app.
     def __init__(self): #constructor method. Se ejuecuta cuando la instancia de la clase es creada.
@@ -43,7 +46,9 @@ class MainWindow(QMainWindow):  #Clase MainWindow heredada de QMainWindow, que e
         print(widgets[0].objectName())
         for i in widgets:
             i.addItems(caracteres)
-        self.ui.controlesComboBox.addItems(controles.keys())
+        global comboBox
+        comboBox = self.ui.controlesComboBox
+        comboBox.addItems(controles.keys())
         print(controles)
     def cargarControl(self):
         controlActual = controles[self.ui.controlesComboBox.currentText()]

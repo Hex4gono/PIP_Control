@@ -30,6 +30,13 @@
         <widget class="QComboBox" name="controlesComboBox"/>
        </item>
        <item>
+        <widget class="QPushButton" name="borrarButton">
+         <property name="text">
+          <string>Eliminar</string>
+         </property>
+        </widget>
+       </item>
+       <item>
         <widget class="QPushButton" name="cargarButton">
          <property name="text">
           <string>Cargar</string>
@@ -313,8 +320,8 @@
    <slot>cargarControl()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>391</x>
-     <y>29</y>
+     <x>597</x>
+     <y>31</y>
     </hint>
     <hint type="destinationlabel">
      <x>459</x>
@@ -338,9 +345,26 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>borrarButton</sender>
+   <signal>released()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>eliminarControl()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>305</x>
+     <y>25</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>392</x>
+     <y>139</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>cargarControl()</slot>
   <slot>guardarControl()</slot>
+  <slot>eliminarControl()</slot>
  </slots>
 </ui>
