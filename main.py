@@ -20,8 +20,8 @@ class ConfirmarDialog(QDialog):
         
     def eliminacionConfirmada(self):
         controles.pop(comboBox.currentText())
-        with open("data/controllers.json",'r+') as file:
-            json.dump(controles, file)
+        with open("data/controllers.json",'w') as file:
+            json.dump(controles, file, indent = 4)
         comboBox.clear()
         comboBox.addItems(controles.keys())
     
@@ -40,7 +40,7 @@ class Dialog(QDialog):
         for i in range(len(widgets)):
             x[nombreconfig][widgets[i].objectName()] = widgets[i].currentText()
         controles.update(x)
-        with open("data/controllers.json",'r+') as file:
+        with open("data/controllers.json",'w') as file:
             json.dump(controles, file, indent = 4)
         
         comboBox.clear()
