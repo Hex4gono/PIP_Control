@@ -8,8 +8,15 @@ void setup()
 }
 void loop()
 {
+    private string Inputs = "";
     for (int i = 0; i = 8; i++)
     {
-        Serial.println(digitalRead(i));
+        if (digitalRead(i) == HIGH)
+        {
+            Inputs += "1"
+        } else {
+            Inputs += "0"
+        }
     }
+    Serial.Println(Inputs);
 }

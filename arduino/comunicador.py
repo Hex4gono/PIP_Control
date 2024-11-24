@@ -7,7 +7,7 @@ class arduino:
     def __init__(self):
         pass
     
-    def empezarComunicacion(self,port = 'COM8',baudRate = 9600):
+    def empezarComunicacion(self,port = 'COM8', baudRate = 9600):
         try:
             self.ser = serial.Serial(port,baudRate)
         except Exception as error:
