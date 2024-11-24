@@ -11,18 +11,16 @@ from GUI.promptconfirmar import Ui_ConfirmarDialog
 with open("data/controllers.json", "r") as file:
     controles = json.load(file)
 caracteres = ['mouseUp','mouseDown','mouseRight','mouseLeft','mouseClickLeft','mouseClickRight','up', 'down', 'right', 'left', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ',', '.', '-', '_', '!', '?', '@', '#', '$', '%', '^', '&', '*', '(', ')', '[', ']', '{', '}', '<', '>', '/', '\\', '|', '+', '=', ':', ';', '"', '\'']
-class ConfirmarDialog:
+class ConfirmarDialog(QDialog):
     def __init__(self):
         super().__init__()
-        self.ui = Ui_Dialog()
+        self.ui = Ui_ConfirmarDialog()
         self.ui.setupUi(self)
         self.ui.buttonBox
-        """
-        self.setWindowTitle('Ventana Secundaria')
         self.setGeometry(300, 300, 250, 150)
-        """
         
     def eliminacionConfirmada(self):
+        print("confirmado")
         pass
     
 class Dialog(QDialog):
@@ -42,8 +40,9 @@ class Dialog(QDialog):
         controles.update(x)
         with open("data/controllers.json",'r+') as file:
             json.dump(controles, file, indent = 4)
-        comboBox.removeItem
-        comboBox.addItem(controles.keys())
+        
+        comboBox.clear()
+        comboBox.addItems(controles.keys())
 
 class MainWindow(QMainWindow):  #Clase MainWindow heredada de QMainWindow, que es una clase de PyQt para crear la ventana principal de la app.
     def __init__(self): #constructor method. Se ejuecuta cuando la instancia de la clase es creada.
@@ -56,13 +55,11 @@ class MainWindow(QMainWindow):  #Clase MainWindow heredada de QMainWindow, que e
         #Haces un array con todos los caracteres seleccionables y despues la pones de accion en todos los combo box
         global widgets 
         widgets = [self.ui.XNegCar,self.ui.XPosCar,self.ui.YNegCar,self.ui.YPosCar,self.ui.XNegCar_2,self.ui.XPosCar_2,self.ui.YNegCar_2,self.ui.YPosCar_2,self.ui.Boton1Sel,self.ui.Boton2Sel,self.ui.Boton3Sel,self.ui.Boton4Sel,self.ui.Boton5Sel,self.ui.Boton6Sel,self.ui.Boton7Sel,self.ui.Boton8Sel]
-        print(widgets[0].objectName())
         for i in widgets:
             i.addItems(caracteres)
         global comboBox
         comboBox = self.ui.controlesComboBox
         comboBox.addItems(controles.keys())
-        print(controles)
         
     def cargarControl(self):
         controlActual = controles[self.ui.controlesComboBox.currentText()]
@@ -70,8 +67,6 @@ class MainWindow(QMainWindow):  #Clase MainWindow heredada de QMainWindow, que e
             if tecla not in caracteres:
                 print("la tecla en el json no es valida")
                 break
-        print(controlActual)
-        print(controlActual["Boton1Sel"])
         claves = ["XNegCar", "XPosCar", "YNegCar", "YPosCar","XNegCar_2", "XPosCar_2", "YNegCar_2", "YPosCar_2","Boton1Sel", "Boton2Sel", "Boton3Sel", "Boton4Sel","Boton5Sel", "Boton6Sel", "Boton7Sel", "Boton8Sel"]
         for i in range(len(widgets)):
             widget = widgets[i]
@@ -80,17 +75,14 @@ class MainWindow(QMainWindow):  #Clase MainWindow heredada de QMainWindow, que e
             widget.setCurrentText(valor)
             
     def guardarControl(self):
-        print("me gusta la pa")
         # Crear instancia del diálogo y abrirlo
         dialogo = Dialog()  # Crear una instancia de Dialog
         dialogo.exec_()  # Mostrar el diálogo de manera modal
-        print("me gusta la pa")
         
-    def eliminarControl(self):    
-        # Crear instancia del diálogo y abrirlo
-        pepe = ConfirmarDialog()  # Crear una instancia de Dialog
-        pepe.exec_()  # Mostrar el diálogo de manera modal
-        print("me gusta la pa")
+    def eliminarControl(self):   
+        pepe = ConfirmarDialog() 
+        pepe.exec_()  
+        
 
 if __name__ == "__main__": #checkea si el script está siendo ejecutado como el prog principal (no importado como un modulo).
     app = QApplication(sys.argv)    # Crea un Qt widget, la cual va ser nuestra ventana.
