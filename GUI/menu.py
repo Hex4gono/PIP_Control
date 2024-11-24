@@ -167,6 +167,7 @@ class Ui_MainWindow(object):
         spacerItem3 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
         self.CABox.addItem(spacerItem3)
         self.CerrarButton = QtWidgets.QPushButton(self.verticalLayoutWidget_5)
+        self.CerrarButton.setEnabled(False)
         self.CerrarButton.setObjectName("CerrarButton")
         self.CABox.addWidget(self.CerrarButton)
         self.AceptarButton = QtWidgets.QPushButton(self.verticalLayoutWidget_5)

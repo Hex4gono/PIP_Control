@@ -51,7 +51,7 @@ class MainWindow(QMainWindow):  #Clase MainWindow heredada de QMainWindow, que e
         super().__init__() #llama al constructor de la clase QMainWindow, para inicializar las funcionalidades básicas de la ventana principal de la app.
         self.ui = Ui_MainWindow() #crea una instancia de Ui_MainWindow class, la cual es la definición de la interfaz del usuario para la ventana principal.
         self.ui.setupUi(self) #llama al método setupUi() de la instancia Ui_MainWindow, para setear los componenetes de la interfaz del usuario dentro de main window.
-        
+        self.ui.CerrarButton.setGeometry(271,1,161,23)
         """     
         self.ui.CerrarButton.clicked.connect(self.close)#Boton para cerrar
         self.ui.cargarButton
@@ -91,11 +91,15 @@ class MainWindow(QMainWindow):  #Clase MainWindow heredada de QMainWindow, que e
     
     def desactivarControl(self):
         self.setEnabled(False)
-        pass
+        self.ui.AceptarButton.setEnabled(True)
+        self.coso.cerrarComunicacion()
     
     def aplicarControl(self):
         self.setEnabled(False)
-        pass
+        self.ui.CerrarButton.setEnabled(True)
+        self.coso = arduino()
+        self.coso.empezarComunicacion()
+        
     
     
      

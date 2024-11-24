@@ -280,6 +280,9 @@
        </item>
        <item>
         <widget class="QPushButton" name="CerrarButton">
+         <property name="enabled">
+          <bool>false</bool>
+         </property>
          <property name="text">
           <string>Cerrar</string>
          </property>
