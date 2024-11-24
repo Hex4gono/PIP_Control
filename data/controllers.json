@@ -52,5 +52,23 @@
         "Boton6Sel": "f",
         "Boton7Sel": "t",
         "Boton8Sel": "g"
+    },
+    "a": {
+        "XNegCar": "mouseUp",
+        "XPosCar": "mouseUp",
+        "YNegCar": "mouseUp",
+        "YPosCar": "mouseUp",
+        "XNegCar_2": "mouseUp",
+        "XPosCar_2": "mouseUp",
+        "YNegCar_2": "mouseUp",
+        "YPosCar_2": "mouseUp",
+        "Boton1Sel": "mouseUp",
+        "Boton2Sel": "mouseUp",
+        "Boton3Sel": "mouseUp",
+        "Boton4Sel": "mouseUp",
+        "Boton5Sel": "mouseUp",
+        "Boton6Sel": "mouseUp",
+        "Boton7Sel": "mouseUp",
+        "Boton8Sel": "mouseUp"
     }
 }

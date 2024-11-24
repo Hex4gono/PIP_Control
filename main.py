@@ -16,12 +16,14 @@ class ConfirmarDialog(QDialog):
         super().__init__()
         self.ui = Ui_ConfirmarDialog()
         self.ui.setupUi(self)
-        self.ui.buttonBox
-        self.setGeometry(300, 300, 250, 150)
+        self.setGeometry(300, 300, 300, 100)
         
     def eliminacionConfirmada(self):
-        print("confirmado")
-        pass
+        controles.pop(comboBox.currentText())
+        with open("data/controllers.json",'r+') as file:
+            json.dump(controles, file)
+        comboBox.clear()
+        comboBox.addItems(controles.keys())
     
 class Dialog(QDialog):
     def __init__(self):
@@ -52,7 +54,7 @@ class MainWindow(QMainWindow):  #Clase MainWindow heredada de QMainWindow, que e
         self.ui.CerrarButton.clicked.connect(self.close)#Boton para cerrar
         self.ui.cargarButton
         self.ui.guardarButton
-        #Haces un array con todos los caracteres seleccionables y despues la pones de accion en todos los combo box
+        # Haces un array con todos los caracteres seleccionables y despues la pones de accion en todos los combo box
         global widgets 
         widgets = [self.ui.XNegCar,self.ui.XPosCar,self.ui.YNegCar,self.ui.YPosCar,self.ui.XNegCar_2,self.ui.XPosCar_2,self.ui.YNegCar_2,self.ui.YPosCar_2,self.ui.Boton1Sel,self.ui.Boton2Sel,self.ui.Boton3Sel,self.ui.Boton4Sel,self.ui.Boton5Sel,self.ui.Boton6Sel,self.ui.Boton7Sel,self.ui.Boton8Sel]
         for i in widgets:
@@ -65,7 +67,7 @@ class MainWindow(QMainWindow):  #Clase MainWindow heredada de QMainWindow, que e
         controlActual = controles[self.ui.controlesComboBox.currentText()]
         for tecla in controlActual.values():
             if tecla not in caracteres:
-                print("la tecla en el json no es valida")
+                print("la tecla en el json no es valida, no deberia estar pasando esto")
                 break
         claves = ["XNegCar", "XPosCar", "YNegCar", "YPosCar","XNegCar_2", "XPosCar_2", "YNegCar_2", "YPosCar_2","Boton1Sel", "Boton2Sel", "Boton3Sel", "Boton4Sel","Boton5Sel", "Boton6Sel", "Boton7Sel", "Boton8Sel"]
         for i in range(len(widgets)):
@@ -80,10 +82,10 @@ class MainWindow(QMainWindow):  #Clase MainWindow heredada de QMainWindow, que e
         dialogo.exec_()  # Mostrar el diálogo de manera modal
         
     def eliminarControl(self):   
-        pepe = ConfirmarDialog() 
-        pepe.exec_()  
+        # sin eso no funciona y no se porque
+        a = ConfirmarDialog() 
+        a.exec_()  
         
-
 if __name__ == "__main__": #checkea si el script está siendo ejecutado como el prog principal (no importado como un modulo).
     app = QApplication(sys.argv)    # Crea un Qt widget, la cual va ser nuestra ventana.
     window = MainWindow() #crea una intancia de MainWindow 
