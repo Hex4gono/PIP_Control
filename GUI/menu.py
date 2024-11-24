@@ -170,6 +170,8 @@ class Ui_MainWindow(object):
         self.CerrarButton.setObjectName("CerrarButton")
         self.CABox.addWidget(self.CerrarButton)
         self.AceptarButton = QtWidgets.QPushButton(self.verticalLayoutWidget_5)
+        self.AceptarButton.setEnabled(True)
+        self.AceptarButton.setCheckable(False)
         self.AceptarButton.setObjectName("AceptarButton")
         self.CABox.addWidget(self.AceptarButton)
         spacerItem4 = QtWidgets.QSpacerItem(40, 20, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum)
@@ -181,6 +183,8 @@ class Ui_MainWindow(object):
         self.cargarButton.released.connect(MainWindow.cargarControl) # type: ignore
         self.guardarButton.released.connect(MainWindow.guardarControl) # type: ignore
         self.borrarButton.released.connect(MainWindow.eliminarControl) # type: ignore
+        self.AceptarButton.released.connect(MainWindow.aplicarControl) # type: ignore
+        self.CerrarButton.released.connect(MainWindow.desactivarControl) # type: ignore
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -198,4 +202,4 @@ class Ui_MainWindow(object):
         self.Boton4txt.setText(_translate("MainWindow", "Boton 4"))
         self.Boton8txt.setText(_translate("MainWindow", "Boton 8"))
         self.CerrarButton.setText(_translate("MainWindow", "Cerrar"))
-        self.AceptarButton.setText(_translate("MainWindow", "Aceptar"))
+        self.AceptarButton.setText(_translate("MainWindow", "Aplicar y conectar control"))

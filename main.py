@@ -2,11 +2,11 @@ import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow, QDialog
 from PyQt5.QtCore import pyqtSlot
 import json
-import serial # type: ignore
 import pyautogui # type: ignore
 from GUI.menu import Ui_MainWindow
 from GUI.nameprompt import Ui_Dialog
 from GUI.promptconfirmar import Ui_ConfirmarDialog
+from arduino.comunicador import arduino
 
 with open("data/controllers.json", "r") as file:
     controles = json.load(file)
@@ -51,9 +51,12 @@ class MainWindow(QMainWindow):  #Clase MainWindow heredada de QMainWindow, que e
         super().__init__() #llama al constructor de la clase QMainWindow, para inicializar las funcionalidades básicas de la ventana principal de la app.
         self.ui = Ui_MainWindow() #crea una instancia de Ui_MainWindow class, la cual es la definición de la interfaz del usuario para la ventana principal.
         self.ui.setupUi(self) #llama al método setupUi() de la instancia Ui_MainWindow, para setear los componenetes de la interfaz del usuario dentro de main window.
+        
+        """     
         self.ui.CerrarButton.clicked.connect(self.close)#Boton para cerrar
         self.ui.cargarButton
         self.ui.guardarButton
+        """
         # Haces un array con todos los caracteres seleccionables y despues la pones de accion en todos los combo box
         global widgets 
         widgets = [self.ui.XNegCar,self.ui.XPosCar,self.ui.YNegCar,self.ui.YPosCar,self.ui.XNegCar_2,self.ui.XPosCar_2,self.ui.YNegCar_2,self.ui.YPosCar_2,self.ui.Boton1Sel,self.ui.Boton2Sel,self.ui.Boton3Sel,self.ui.Boton4Sel,self.ui.Boton5Sel,self.ui.Boton6Sel,self.ui.Boton7Sel,self.ui.Boton8Sel]
@@ -82,10 +85,20 @@ class MainWindow(QMainWindow):  #Clase MainWindow heredada de QMainWindow, que e
         dialogo.exec_()  # Mostrar el diálogo de manera modal
         
     def eliminarControl(self):   
-        # sin eso no funciona y no se porque
+        # sin esto no funciona y no se porque
         a = ConfirmarDialog() 
         a.exec_()  
-        
+    
+    def desactivarControl(self):
+        self.setEnabled(False)
+        pass
+    
+    def aplicarControl(self):
+        self.setEnabled(False)
+        pass
+    
+    
+     
 if __name__ == "__main__": #checkea si el script está siendo ejecutado como el prog principal (no importado como un modulo).
     app = QApplication(sys.argv)    # Crea un Qt widget, la cual va ser nuestra ventana.
     window = MainWindow() #crea una intancia de MainWindow 

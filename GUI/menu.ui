@@ -287,8 +287,14 @@
        </item>
        <item>
         <widget class="QPushButton" name="AceptarButton">
+         <property name="enabled">
+          <bool>true</bool>
+         </property>
          <property name="text">
-          <string>Aceptar</string>
+          <string>Aplicar y conectar control</string>
+         </property>
+         <property name="checkable">
+          <bool>false</bool>
          </property>
         </widget>
        </item>
@@ -361,10 +367,44 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>AceptarButton</sender>
+   <signal>released()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>aplicarControl()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>435</x>
+     <y>440</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>548</x>
+     <y>484</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>CerrarButton</sender>
+   <signal>released()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>desactivarControl()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>342</x>
+     <y>442</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>436</x>
+     <y>520</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>cargarControl()</slot>
   <slot>guardarControl()</slot>
   <slot>eliminarControl()</slot>
+  <slot>aplicarControl()</slot>
+  <slot>desactivarControl()</slot>
  </slots>
 </ui>
