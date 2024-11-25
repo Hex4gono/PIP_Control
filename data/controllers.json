@@ -15,7 +15,9 @@
         "Boton5Sel": "mouseUp",
         "Boton6Sel": "mouseUp",
         "Boton7Sel": "mouseUp",
-        "Boton8Sel": "mouseUp"
+        "Boton8Sel": "mouseUp",
+        "L3Sel": "mouseUp",
+        "R3Sel": "mouseUp"
     },
     "example": {
         "XNegCar": "left",
@@ -33,7 +35,9 @@
         "Boton5Sel": "a",
         "Boton6Sel": "a",
         "Boton7Sel": "a",
-        "Boton8Sel": "a"
+        "Boton8Sel": "a",
+        "L3Sel": "mouseUp",
+        "R3Sel": "mouseUp"
     },
     "minecraft": {
         "XNegCar": "w",
@@ -51,7 +55,9 @@
         "Boton5Sel": "q",
         "Boton6Sel": "f",
         "Boton7Sel": "t",
-        "Boton8Sel": "g"
+        "Boton8Sel": "g",
+        "L3Sel": "mouseUp",
+        "R3Sel": "mouseUp"
     },
     "a": {
         "XNegCar": "mouseUp",
@@ -69,6 +75,8 @@
         "Boton5Sel": "mouseUp",
         "Boton6Sel": "mouseUp",
         "Boton7Sel": "mouseUp",
-        "Boton8Sel": "mouseUp"
+        "Boton8Sel": "mouseUp",
+        "L3Sel": "mouseUp",
+        "R3Sel": "mouseUp"
     }
 }

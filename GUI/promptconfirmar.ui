@@ -63,8 +63,8 @@
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>158</x>
-     <y>274</y>
+     <x>98</x>
+     <y>84</y>
     </hint>
     <hint type="destinationlabel">
      <x>157</x>
@@ -79,8 +79,8 @@
    <slot>reject()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>226</x>
-     <y>280</y>
+     <x>166</x>
+     <y>90</y>
     </hint>
     <hint type="destinationlabel">
      <x>286</x>
@@ -95,8 +95,8 @@
    <slot>eliminacionConfirmada()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>161</x>
-     <y>266</y>
+     <x>101</x>
+     <y>76</y>
     </hint>
     <hint type="destinationlabel">
      <x>234</x>

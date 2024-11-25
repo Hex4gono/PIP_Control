@@ -59,7 +59,7 @@ class MainWindow(QMainWindow):  #Clase MainWindow heredada de QMainWindow, que e
         """
         # Haces un array con todos los caracteres seleccionables y despues la pones de accion en todos los combo box
         global widgets 
-        widgets = [self.ui.XNegCar,self.ui.XPosCar,self.ui.YNegCar,self.ui.YPosCar,self.ui.XNegCar_2,self.ui.XPosCar_2,self.ui.YNegCar_2,self.ui.YPosCar_2,self.ui.Boton1Sel,self.ui.Boton2Sel,self.ui.Boton3Sel,self.ui.Boton4Sel,self.ui.Boton5Sel,self.ui.Boton6Sel,self.ui.Boton7Sel,self.ui.Boton8Sel]
+        widgets = [self.ui.XNegCar,self.ui.XPosCar,self.ui.YNegCar,self.ui.YPosCar,self.ui.XNegCar_2,self.ui.XPosCar_2,self.ui.YNegCar_2,self.ui.YPosCar_2,self.ui.Boton1Sel,self.ui.Boton2Sel,self.ui.Boton3Sel,self.ui.Boton4Sel,self.ui.Boton5Sel,self.ui.Boton6Sel,self.ui.Boton7Sel,self.ui.Boton8Sel,self.ui.L3Sel,self.ui.R3Sel]
         for i in widgets:
             i.addItems(caracteres)
         global comboBox
@@ -72,12 +72,9 @@ class MainWindow(QMainWindow):  #Clase MainWindow heredada de QMainWindow, que e
             if tecla not in caracteres:
                 print("la tecla en el json no es valida, no deberia estar pasando esto")
                 break
-        claves = ["XNegCar", "XPosCar", "YNegCar", "YPosCar","XNegCar_2", "XPosCar_2", "YNegCar_2", "YPosCar_2","Boton1Sel", "Boton2Sel", "Boton3Sel", "Boton4Sel","Boton5Sel", "Boton6Sel", "Boton7Sel", "Boton8Sel"]
+        claves = ["XNegCar", "XPosCar", "YNegCar", "YPosCar","XNegCar_2", "XPosCar_2", "YNegCar_2", "YPosCar_2","Boton1Sel", "Boton2Sel", "Boton3Sel", "Boton4Sel","Boton5Sel", "Boton6Sel", "Boton7Sel", "Boton8Sel","L3Sel","R3Sel"]
         for i in range(len(widgets)):
-            widget = widgets[i]
-            clave = claves[i]
-            valor = controlActual.get(clave)
-            widget.setCurrentText(valor)
+            widgets[i].setCurrentText(controlActual.get(claves[i]))
             
     def guardarControl(self):
         # Crear instancia del diálogo y abrirlo
