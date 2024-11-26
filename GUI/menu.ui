@@ -100,7 +100,7 @@
         </layout>
        </item>
        <item>
-        <widget class="QPushButton" name="AlphaSortButton">
+        <widget class="QPushButton" name="SortButton">
          <property name="sizePolicy">
           <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
            <horstretch>0</horstretch>
@@ -779,7 +779,7 @@
    </hints>
   </connection>
   <connection>
-   <sender>AlphaSortButton</sender>
+   <sender>SortButton</sender>
    <signal>released()</signal>
    <receiver>MainWindow</receiver>
    <slot>sortearControl()</slot>

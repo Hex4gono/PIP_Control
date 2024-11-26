@@ -57,18 +57,18 @@ class Ui_MainWindow(object):
         self.controlesComboBox.setObjectName("controlesComboBox")
         self.verticalLayout.addWidget(self.controlesComboBox)
         self.ConfigBox.addLayout(self.verticalLayout)
-        self.AlphaSortButton = QtWidgets.QPushButton(self.verticalLayoutWidget_5)
+        self.SortButton = QtWidgets.QPushButton(self.verticalLayoutWidget_5)
         sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
         sizePolicy.setHorizontalStretch(0)
         sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.AlphaSortButton.sizePolicy().hasHeightForWidth())
-        self.AlphaSortButton.setSizePolicy(sizePolicy)
-        self.AlphaSortButton.setMaximumSize(QtCore.QSize(40, 16777215))
+        sizePolicy.setHeightForWidth(self.SortButton.sizePolicy().hasHeightForWidth())
+        self.SortButton.setSizePolicy(sizePolicy)
+        self.SortButton.setMaximumSize(QtCore.QSize(40, 16777215))
         font = QtGui.QFont()
         font.setPointSize(12)
-        self.AlphaSortButton.setFont(font)
-        self.AlphaSortButton.setObjectName("AlphaSortButton")
-        self.ConfigBox.addWidget(self.AlphaSortButton)
+        self.SortButton.setFont(font)
+        self.SortButton.setObjectName("SortButton")
+        self.ConfigBox.addWidget(self.SortButton)
         self.guardarButton = QtWidgets.QPushButton(self.verticalLayoutWidget_5)
         font = QtGui.QFont()
         font.setPointSize(13)
@@ -348,13 +348,13 @@ class Ui_MainWindow(object):
         self.borrarButton.released.connect(MainWindow.eliminarControl) # type: ignore
         self.AceptarButton.released.connect(MainWindow.aplicarControl) # type: ignore
         self.CerrarButton.released.connect(MainWindow.desactivarControl) # type: ignore
-        self.AlphaSortButton.released.connect(MainWindow.sortearControl) # type: ignore
+        self.SortButton.released.connect(MainWindow.sortearControl) # type: ignore
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.AlphaSortButton.setText(_translate("MainWindow", "A-Z"))
+        self.SortButton.setText(_translate("MainWindow", "A-Z"))
         self.guardarButton.setText(_translate("MainWindow", "Guardar Actual"))
         self.borrarButton.setText(_translate("MainWindow", "Eliminar"))
         self.cargarButton.setText(_translate("MainWindow", "Cargar"))

@@ -62,23 +62,16 @@ class MainWindow(QMainWindow):  #Clase MainWindow heredada de QMainWindow, que e
         global comboBox
         comboBox = self.ui.controlesComboBox
         comboBox.addItems(controles.keys())
+        
     def sortearControl(self):
         if self.ui.SortButton.text() == "A-Z":
             self.ui.SortButton.setText("Z-A")
-            comboBox.clear()
-            controles = dict(sorted(controles.items(),reverse=True))
-            comboBox.addItems(controles.keys())
-            claves_ordenadas = sorted(controles.keys(), reverse=True)  # Orden descendente
+            claves_ordenadas = sorted(controles.keys(), reverse=True)
         else:
             self.ui.SortButton.setText("A-Z")
-            comboBox.clear()
-            controles = dict(sorted(controles.items()))
-            comboBox.addItems(controles.keys())
-            claves_ordenadas = sorted(controles.keys())  # Orden ascendente
-
+            claves_ordenadas = sorted(controles.keys())
         comboBox.clear()
-        comboBox.addItems(claves_ordenadas)  # Agrega las claves ordenadas
-
+        comboBox.addItems(claves_ordenadas)
         
         
     def cargarControl(self):
@@ -94,18 +87,22 @@ class MainWindow(QMainWindow):  #Clase MainWindow heredada de QMainWindow, que e
     def guardarControl(self):
         dialogo = Dialog()
         dialogo.exec_()  
+        
     def eliminarControl(self):
         a = ConfirmarDialog() 
         a.exec_()  
+        
     def desactivarControl(self):
         self.setEnabled(False)
         self.ui.AceptarButton.setEnabled(True)
         self.coso.cerrarComunicacion()
+        
     def aplicarControl(self):
         self.setEnabled(False)
         self.ui.CerrarButton.setEnabled(True)
         self.coso = arduino()
         self.coso.empezarComunicacion()
+        
 if __name__ == "__main__": #checkea si el script está siendo ejecutado como el prog principal (no importado como un modulo).i
     app = QApplication(sys.argv)    # Crea un Qt widget, la cual va ser nuestra ventana.
     window = MainWindow() #crea una intancia de MainWindow 
