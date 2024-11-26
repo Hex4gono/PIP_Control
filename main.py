@@ -65,12 +65,20 @@ class MainWindow(QMainWindow):  #Clase MainWindow heredada de QMainWindow, que e
     def sortearControl(self):
         if self.ui.SortButton.text() == "A-Z":
             self.ui.SortButton.setText("Z-A")
-            claves_ordenadas = sorted(controles.keys(), reverse=True)
+            comboBox.clear()
+            controles = dict(sorted(controles.items(),reverse=True))
+            comboBox.addItems(controles.keys())
+            claves_ordenadas = sorted(controles.keys(), reverse=True)  # Orden descendente
         else:
             self.ui.SortButton.setText("A-Z")
-            claves_ordenadas = sorted(controles.keys())
+            comboBox.clear()
+            controles = dict(sorted(controles.items()))
+            comboBox.addItems(controles.keys())
+            claves_ordenadas = sorted(controles.keys())  # Orden ascendente
+
         comboBox.clear()
-        comboBox.addItems(claves_ordenadas)
+        comboBox.addItems(claves_ordenadas)  # Agrega las claves ordenadas
+
         
         
     def cargarControl(self):
