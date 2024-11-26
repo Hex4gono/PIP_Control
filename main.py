@@ -1,6 +1,5 @@
 import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow, QDialog
-from PyQt5.QtCore import pyqtSlot
 import json
 import pyautogui # type: ignore
 from GUI.menu import Ui_MainWindow
