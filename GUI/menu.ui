@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>876</width>
-    <height>570</height>
+    <height>588</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -27,36 +27,111 @@
      <item>
       <layout class="QHBoxLayout" name="ConfigBox">
        <item>
-        <widget class="QComboBox" name="controlesComboBox">
+        <layout class="QVBoxLayout" name="verticalLayout" stretch="0,0">
+         <property name="spacing">
+          <number>1</number>
+         </property>
+         <property name="sizeConstraint">
+          <enum>QLayout::SetFixedSize</enum>
+         </property>
+         <property name="leftMargin">
+          <number>0</number>
+         </property>
+         <property name="topMargin">
+          <number>0</number>
+         </property>
+         <property name="rightMargin">
+          <number>0</number>
+         </property>
+         <property name="bottomMargin">
+          <number>0</number>
+         </property>
+         <item>
+          <widget class="QPlainTextEdit" name="SearchInputField">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>300</width>
+             <height>30</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>12</pointsize>
+            </font>
+           </property>
+           <property name="placeholderText">
+            <string extracomment="buscar..."/>
+           </property>
+          </widget>
+         </item>
+         <item>
+          <widget class="QComboBox" name="controlesComboBox">
+           <property name="sizePolicy">
+            <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
+             <horstretch>0</horstretch>
+             <verstretch>0</verstretch>
+            </sizepolicy>
+           </property>
+           <property name="minimumSize">
+            <size>
+             <width>200</width>
+             <height>0</height>
+            </size>
+           </property>
+           <property name="maximumSize">
+            <size>
+             <width>300</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>12</pointsize>
+            </font>
+           </property>
+          </widget>
+         </item>
+        </layout>
+       </item>
+       <item>
+        <widget class="QPushButton" name="AlphaSortButton">
          <property name="sizePolicy">
-          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+          <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
            <horstretch>0</horstretch>
            <verstretch>0</verstretch>
           </sizepolicy>
          </property>
-         <property name="minimumSize">
-          <size>
-           <width>300</width>
-           <height>0</height>
-          </size>
-         </property>
-         <property name="font">
-          <font>
-           <pointsize>13</pointsize>
-          </font>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QPushButton" name="SortButton">
          <property name="maximumSize">
           <size>
            <width>40</width>
            <height>16777215</height>
           </size>
          </property>
+         <property name="font">
+          <font>
+           <pointsize>12</pointsize>
+          </font>
+         </property>
          <property name="text">
           <string>A-Z</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="guardarButton">
+         <property name="font">
+          <font>
+           <pointsize>13</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Guardar Actual</string>
          </property>
         </widget>
        </item>
@@ -84,18 +159,6 @@
          </property>
         </widget>
        </item>
-       <item>
-        <widget class="QPushButton" name="guardarButton">
-         <property name="font">
-          <font>
-           <pointsize>13</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Guardar Actual</string>
-         </property>
-        </widget>
-       </item>
       </layout>
      </item>
      <item>
@@ -115,6 +178,11 @@
       <layout class="QHBoxLayout" name="horizontalLayout_5">
        <item>
         <widget class="QLabel" name="label">
+         <property name="font">
+          <font>
+           <pointsize>13</pointsize>
+          </font>
+         </property>
          <property name="text">
           <string>Joystick Izquierdo</string>
          </property>
@@ -125,6 +193,11 @@
        </item>
        <item>
         <widget class="QLabel" name="label_2">
+         <property name="font">
+          <font>
+           <pointsize>13</pointsize>
+          </font>
+         </property>
          <property name="layoutDirection">
           <enum>Qt::LeftToRight</enum>
          </property>
@@ -155,23 +228,8 @@
        </item>
        <item>
         <layout class="QGridLayout" name="JSI">
-         <item row="1" column="2">
-          <widget class="QComboBox" name="YNegCar">
-           <property name="maximumSize">
-            <size>
-             <width>16777215</width>
-             <height>16777215</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <pointsize>13</pointsize>
-            </font>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="1">
-          <widget class="QComboBox" name="XNegCar">
+         <item row="1" column="1">
+          <widget class="QComboBox" name="L3Sel">
            <property name="maximumSize">
             <size>
              <width>16777215</width>
@@ -186,6 +244,21 @@
           </widget>
          </item>
          <item row="1" column="0">
+          <widget class="QComboBox" name="XNegCar">
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>13</pointsize>
+            </font>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
           <widget class="QComboBox" name="YPosCar">
            <property name="maximumSize">
             <size>
@@ -201,7 +274,7 @@
           </widget>
          </item>
          <item row="2" column="1">
-          <widget class="QComboBox" name="XPosCar">
+          <widget class="QComboBox" name="YNegCar">
            <property name="maximumSize">
             <size>
              <width>16777215</width>
@@ -215,8 +288,8 @@
            </property>
           </widget>
          </item>
-         <item row="1" column="1">
-          <widget class="QComboBox" name="L3Sel">
+         <item row="1" column="2">
+          <widget class="QComboBox" name="XPosCar">
            <property name="maximumSize">
             <size>
              <width>16777215</width>
@@ -247,23 +320,8 @@
        </item>
        <item>
         <layout class="QGridLayout" name="JSI_2">
-         <item row="1" column="2">
-          <widget class="QComboBox" name="YNegCar_2">
-           <property name="maximumSize">
-            <size>
-             <width>16777215</width>
-             <height>16777215</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <pointsize>13</pointsize>
-            </font>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="1">
-          <widget class="QComboBox" name="XPosCar_2">
+         <item row="1" column="1">
+          <widget class="QComboBox" name="R3Sel">
            <property name="maximumSize">
             <size>
              <width>16777215</width>
@@ -278,21 +336,6 @@
           </widget>
          </item>
          <item row="0" column="1">
-          <widget class="QComboBox" name="XNegCar_2">
-           <property name="maximumSize">
-            <size>
-             <width>16777215</width>
-             <height>16777215</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <pointsize>13</pointsize>
-            </font>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="0">
           <widget class="QComboBox" name="YPosCar_2">
            <property name="maximumSize">
             <size>
@@ -307,8 +350,38 @@
            </property>
           </widget>
          </item>
-         <item row="1" column="1">
-          <widget class="QComboBox" name="R3Sel">
+         <item row="2" column="1">
+          <widget class="QComboBox" name="YNegCar_2">
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>13</pointsize>
+            </font>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="2">
+          <widget class="QComboBox" name="XPosCar_2">
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>13</pointsize>
+            </font>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="0">
+          <widget class="QComboBox" name="XNegCar_2">
            <property name="maximumSize">
             <size>
              <width>16777215</width>
@@ -702,22 +775,6 @@
     <hint type="destinationlabel">
      <x>436</x>
      <y>520</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>SortButton</sender>
-   <signal>released()</signal>
-   <receiver>MainWindow</receiver>
-   <slot>sortearControl()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>347</x>
-     <y>25</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>301</x>
-     <y>71</y>
     </hint>
    </hints>
   </connection>
