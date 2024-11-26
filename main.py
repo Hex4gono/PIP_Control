@@ -7,7 +7,6 @@ from GUI.menu import Ui_MainWindow
 from GUI.nameprompt import Ui_Dialog
 from GUI.promptconfirmar import Ui_ConfirmarDialog
 from arduino.comunicador import arduino
-import btnsfunc
 
 with open("data/controllers.json", "r") as file:
     controles = json.load(file)

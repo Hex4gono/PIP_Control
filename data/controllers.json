@@ -1,6 +1,6 @@
 {
     "": {
-        "XNegCar": "d",
+        "XNegCar": "mouseUp",
         "XPosCar": "mouseUp",
         "YNegCar": "mouseUp",
         "YPosCar": "mouseUp",

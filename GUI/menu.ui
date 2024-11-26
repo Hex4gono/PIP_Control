@@ -155,23 +155,8 @@
        </item>
        <item>
         <layout class="QGridLayout" name="JSI">
-         <item row="1" column="2">
-          <widget class="QComboBox" name="YNegCar">
-           <property name="maximumSize">
-            <size>
-             <width>16777215</width>
-             <height>16777215</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <pointsize>13</pointsize>
-            </font>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="1">
-          <widget class="QComboBox" name="XNegCar">
+         <item row="1" column="1">
+          <widget class="QComboBox" name="L3Sel">
            <property name="maximumSize">
             <size>
              <width>16777215</width>
@@ -186,6 +171,21 @@
           </widget>
          </item>
          <item row="1" column="0">
+          <widget class="QComboBox" name="XNegCar">
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>13</pointsize>
+            </font>
+           </property>
+          </widget>
+         </item>
+         <item row="0" column="1">
           <widget class="QComboBox" name="YPosCar">
            <property name="maximumSize">
             <size>
@@ -201,7 +201,7 @@
           </widget>
          </item>
          <item row="2" column="1">
-          <widget class="QComboBox" name="XPosCar">
+          <widget class="QComboBox" name="YNegCar">
            <property name="maximumSize">
             <size>
              <width>16777215</width>
@@ -215,8 +215,8 @@
            </property>
           </widget>
          </item>
-         <item row="1" column="1">
-          <widget class="QComboBox" name="L3Sel">
+         <item row="1" column="2">
+          <widget class="QComboBox" name="XPosCar">
            <property name="maximumSize">
             <size>
              <width>16777215</width>
@@ -247,23 +247,8 @@
        </item>
        <item>
         <layout class="QGridLayout" name="JSI_2">
-         <item row="1" column="2">
-          <widget class="QComboBox" name="YNegCar_2">
-           <property name="maximumSize">
-            <size>
-             <width>16777215</width>
-             <height>16777215</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <pointsize>13</pointsize>
-            </font>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="1">
-          <widget class="QComboBox" name="XPosCar_2">
+         <item row="1" column="1">
+          <widget class="QComboBox" name="R3Sel">
            <property name="maximumSize">
             <size>
              <width>16777215</width>
@@ -278,21 +263,6 @@
           </widget>
          </item>
          <item row="0" column="1">
-          <widget class="QComboBox" name="XNegCar_2">
-           <property name="maximumSize">
-            <size>
-             <width>16777215</width>
-             <height>16777215</height>
-            </size>
-           </property>
-           <property name="font">
-            <font>
-             <pointsize>13</pointsize>
-            </font>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="0">
           <widget class="QComboBox" name="YPosCar_2">
            <property name="maximumSize">
             <size>
@@ -307,8 +277,38 @@
            </property>
           </widget>
          </item>
-         <item row="1" column="1">
-          <widget class="QComboBox" name="R3Sel">
+         <item row="1" column="0">
+          <widget class="QComboBox" name="XNegCar_2">
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>13</pointsize>
+            </font>
+           </property>
+          </widget>
+         </item>
+         <item row="2" column="1">
+          <widget class="QComboBox" name="YNegCar_2">
+           <property name="maximumSize">
+            <size>
+             <width>16777215</width>
+             <height>16777215</height>
+            </size>
+           </property>
+           <property name="font">
+            <font>
+             <pointsize>13</pointsize>
+            </font>
+           </property>
+          </widget>
+         </item>
+         <item row="1" column="2">
+          <widget class="QComboBox" name="XPosCar_2">
            <property name="maximumSize">
             <size>
              <width>16777215</width>
