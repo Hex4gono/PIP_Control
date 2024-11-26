@@ -103,6 +103,16 @@ class MainWindow(QMainWindow):  #Clase MainWindow heredada de QMainWindow, que e
         self.coso = arduino()
         self.coso.empezarComunicacion()
         
+    def buscarControl(self):
+        aBuscar = self.ui.searchLineEdit.text()
+        if aBuscar != "":
+            self.ui.controlesComboBox.clear()
+            self.ui.controlesComboBox.showPopup()
+            for elemento in controles.keys():
+                if aBuscar in elemento:
+                    self.ui.controlesComboBox.addItem(elemento)
+        
+            
 if __name__ == "__main__": #checkea si el script está siendo ejecutado como el prog principal (no importado como un modulo).i
     app = QApplication(sys.argv)    # Crea un Qt widget, la cual va ser nuestra ventana.
     window = MainWindow() #crea una intancia de MainWindow 

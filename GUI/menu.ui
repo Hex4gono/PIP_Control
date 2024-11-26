@@ -47,7 +47,7 @@
           <number>0</number>
          </property>
          <item>
-          <widget class="QPlainTextEdit" name="SearchInputField">
+          <widget class="QLineEdit" name="searchLineEdit">
            <property name="sizePolicy">
             <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
              <horstretch>0</horstretch>
@@ -56,17 +56,14 @@
            </property>
            <property name="maximumSize">
             <size>
-             <width>300</width>
-             <height>30</height>
+             <width>350</width>
+             <height>16777215</height>
             </size>
            </property>
            <property name="font">
             <font>
-             <pointsize>12</pointsize>
+             <pointsize>13</pointsize>
             </font>
-           </property>
-           <property name="placeholderText">
-            <string extracomment="buscar..."/>
            </property>
           </widget>
          </item>
@@ -86,7 +83,7 @@
            </property>
            <property name="maximumSize">
             <size>
-             <width>300</width>
+             <width>350</width>
              <height>16777215</height>
             </size>
            </property>
@@ -124,18 +121,6 @@
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="guardarButton">
-         <property name="font">
-          <font>
-           <pointsize>13</pointsize>
-          </font>
-         </property>
-         <property name="text">
-          <string>Guardar Actual</string>
-         </property>
-        </widget>
-       </item>
-       <item>
         <widget class="QPushButton" name="borrarButton">
          <property name="font">
           <font>
@@ -156,6 +141,18 @@
          </property>
          <property name="text">
           <string>Cargar</string>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="guardarButton">
+         <property name="font">
+          <font>
+           <pointsize>13</pointsize>
+          </font>
+         </property>
+         <property name="text">
+          <string>Guardar Actual</string>
          </property>
         </widget>
        </item>
@@ -705,7 +702,7 @@
    <slot>cargarControl()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>865</x>
+     <x>680</x>
      <y>49</y>
     </hint>
     <hint type="destinationlabel">
@@ -721,7 +718,7 @@
    <slot>guardarControl()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>496</x>
+     <x>865</x>
      <y>42</y>
     </hint>
     <hint type="destinationlabel">
@@ -737,7 +734,7 @@
    <slot>eliminarControl()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>681</x>
+     <x>496</x>
      <y>45</y>
     </hint>
     <hint type="destinationlabel">
@@ -802,5 +799,6 @@
   <slot>aplicarControl()</slot>
   <slot>desactivarControl()</slot>
   <slot>sortearControl()</slot>
+  <slot>buscarControl()</slot>
  </slots>
 </ui>
