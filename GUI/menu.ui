@@ -705,8 +705,8 @@
    <slot>cargarControl()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>597</x>
-     <y>31</y>
+     <x>865</x>
+     <y>49</y>
     </hint>
     <hint type="destinationlabel">
      <x>459</x>
@@ -721,8 +721,8 @@
    <slot>guardarControl()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>865</x>
-     <y>24</y>
+     <x>496</x>
+     <y>42</y>
     </hint>
     <hint type="destinationlabel">
      <x>683</x>
@@ -737,8 +737,8 @@
    <slot>eliminarControl()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>524</x>
-     <y>27</y>
+     <x>681</x>
+     <y>45</y>
     </hint>
     <hint type="destinationlabel">
      <x>392</x>
@@ -769,12 +769,28 @@
    <slot>desactivarControl()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>373</x>
+     <x>360</x>
      <y>558</y>
     </hint>
     <hint type="destinationlabel">
      <x>436</x>
      <y>520</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>AlphaSortButton</sender>
+   <signal>released()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>sortearControl()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>290</x>
+     <y>42</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>207</x>
+     <y>115</y>
     </hint>
    </hints>
   </connection>

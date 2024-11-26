@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_MainWindow(object):
     def setupUi(self, MainWindow):
         MainWindow.setObjectName("MainWindow")
-        MainWindow.resize(876, 827)
+        MainWindow.resize(876, 588)
         self.centralwidget = QtWidgets.QWidget(MainWindow)
         self.centralwidget.setObjectName("centralwidget")
         self.verticalLayoutWidget_5 = QtWidgets.QWidget(self.centralwidget)
@@ -52,18 +52,23 @@ class Ui_MainWindow(object):
         self.controlesComboBox.setMinimumSize(QtCore.QSize(200, 0))
         self.controlesComboBox.setMaximumSize(QtCore.QSize(300, 16777215))
         font = QtGui.QFont()
-        font.setPointSize(13)
+        font.setPointSize(12)
         self.controlesComboBox.setFont(font)
         self.controlesComboBox.setObjectName("controlesComboBox")
         self.verticalLayout.addWidget(self.controlesComboBox)
         self.ConfigBox.addLayout(self.verticalLayout)
-        self.SortButton = QtWidgets.QPushButton(self.verticalLayoutWidget_5)
-        self.SortButton.setMaximumSize(QtCore.QSize(40, 16777215))
+        self.AlphaSortButton = QtWidgets.QPushButton(self.verticalLayoutWidget_5)
+        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Fixed, QtWidgets.QSizePolicy.Fixed)
+        sizePolicy.setHorizontalStretch(0)
+        sizePolicy.setVerticalStretch(0)
+        sizePolicy.setHeightForWidth(self.AlphaSortButton.sizePolicy().hasHeightForWidth())
+        self.AlphaSortButton.setSizePolicy(sizePolicy)
+        self.AlphaSortButton.setMaximumSize(QtCore.QSize(40, 16777215))
         font = QtGui.QFont()
-        font.setPointSize(11)
-        self.SortButton.setFont(font)
-        self.SortButton.setObjectName("SortButton")
-        self.ConfigBox.addWidget(self.SortButton)
+        font.setPointSize(12)
+        self.AlphaSortButton.setFont(font)
+        self.AlphaSortButton.setObjectName("AlphaSortButton")
+        self.ConfigBox.addWidget(self.AlphaSortButton)
         self.guardarButton = QtWidgets.QPushButton(self.verticalLayoutWidget_5)
         font = QtGui.QFont()
         font.setPointSize(13)
@@ -343,13 +348,13 @@ class Ui_MainWindow(object):
         self.borrarButton.released.connect(MainWindow.eliminarControl) # type: ignore
         self.AceptarButton.released.connect(MainWindow.aplicarControl) # type: ignore
         self.CerrarButton.released.connect(MainWindow.desactivarControl) # type: ignore
-        self.SortButton.released.connect(MainWindow.sortearControl) # type: ignore
+        self.AlphaSortButton.released.connect(MainWindow.sortearControl) # type: ignore
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
         MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
-        self.SortButton.setText(_translate("MainWindow", "A-Z"))
+        self.AlphaSortButton.setText(_translate("MainWindow", "A-Z"))
         self.guardarButton.setText(_translate("MainWindow", "Guardar Actual"))
         self.borrarButton.setText(_translate("MainWindow", "Eliminar"))
         self.cargarButton.setText(_translate("MainWindow", "Cargar"))
