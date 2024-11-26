@@ -348,6 +348,7 @@ class Ui_MainWindow(object):
         self.AceptarButton.released.connect(MainWindow.aplicarControl) # type: ignore
         self.CerrarButton.released.connect(MainWindow.desactivarControl) # type: ignore
         self.SortButton.released.connect(MainWindow.sortearControl) # type: ignore
+        self.searchLineEdit.textChanged['QString'].connect(MainWindow.buscarControl) # type: ignore
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):

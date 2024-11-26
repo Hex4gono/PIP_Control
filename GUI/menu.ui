@@ -702,7 +702,7 @@
    <slot>cargarControl()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>680</x>
+     <x>643</x>
      <y>49</y>
     </hint>
     <hint type="destinationlabel">
@@ -734,7 +734,7 @@
    <slot>eliminarControl()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>496</x>
+     <x>440</x>
      <y>45</y>
     </hint>
     <hint type="destinationlabel">
@@ -782,12 +782,28 @@
    <slot>sortearControl()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>290</x>
+     <x>234</x>
      <y>42</y>
     </hint>
     <hint type="destinationlabel">
      <x>207</x>
      <y>115</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>searchLineEdit</sender>
+   <signal>textChanged(QString)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>buscarControl()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>57</x>
+     <y>32</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>105</x>
+     <y>155</y>
     </hint>
    </hints>
   </connection>

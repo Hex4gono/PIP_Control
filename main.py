@@ -65,7 +65,7 @@ class MainWindow(QMainWindow):  #Clase MainWindow heredada de QMainWindow, que e
         comboBox.addItems(sorted(controles.keys(), reverse=orden_inverso))
            
     def cargarControl(self):
-        controlActual = controles.get(self.ui.controlesComboBox.currentText(), {})
+        controlActual = controles.get(self.ui.controlesComboBox.currentText())
         claves = ["XNegCar", "XPosCar", "YNegCar", "YPosCar","XNegCar_2", "XPosCar_2", "YNegCar_2", "YPosCar_2","Boton1Sel", "Boton2Sel", "Boton3Sel", "Boton4Sel","Boton5Sel", "Boton6Sel", "Boton7Sel", "Boton8Sel","L3Sel","R3Sel"]
         for i in range(len(widgets)):
             widgets[i].setCurrentText(controlActual.get(claves[i]))
@@ -97,6 +97,9 @@ class MainWindow(QMainWindow):  #Clase MainWindow heredada de QMainWindow, que e
             for elemento in controles.keys():
                 if aBuscar in elemento:
                     self.ui.controlesComboBox.addItem(elemento)
+        else:
+            self.ui.controlesComboBox.clear()
+            self.ui.controlesComboBox.addItems(controles.keys())
         
             
 if __name__ == "__main__": #checkea si el script está siendo ejecutado como el prog principal (no importado como un modulo).i
