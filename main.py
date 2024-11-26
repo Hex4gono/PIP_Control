@@ -8,28 +8,11 @@ from GUI.nameprompt import Ui_Dialog
 from GUI.promptconfirmar import Ui_ConfirmarDialog
 from arduino.comunicador import arduino
 from confirmarDialog import ConfirmarDialog
+from nombreDialog import Dialog
 with open("data/controllers.json", "r") as file:
     global controles
     controles = dict(sorted(json.load(file).items()))
 caracteres = ['mouseUp','mouseDown','mouseRight','mouseLeft','mouseClickLeft','mouseClickRight','shift','control','tab','printscreen','F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9', 'F10', 'F11', 'F12','up', 'down', 'right', 'left', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ',', '.', '-', '_', '!', '?', '@', '#', '$', '%', '^', '&', '*', '(', ')', '[', ']', '{', '}', '<', '>', '/', '\\', '|', '+', '=', ':', ';', '"', '\'']
-class Dialog(QDialog):
-    def __init__(self):
-        super().__init__()
-        self.ui = Ui_Dialog()
-        self.ui.setupUi(self)
-        self.setWindowTitle("Guardar Configuración")
-        self.setGeometry(300, 300, 250, 150)
-
-    def aceptarguardar(self):
-        nombreconfig = self.ui.nombreguardar.text()
-        x = {nombreconfig:{}}
-        for i in range(len(widgets)):
-            x[nombreconfig][widgets[i].objectName()] = widgets[i].currentText()
-        controles.update(x)
-        with open("data/controllers.json",'w') as file:
-            json.dump(controles, file, indent = 4)
-        comboBox.clear()
-        comboBox.addItems(controles.keys())
 class MainWindow(QMainWindow):  #Clase MainWindow heredada de QMainWindow, que es una clase de PyQt para crear la ventana principal de la app.
     def __init__(self): #constructor method. Se ejuecuta cuando la instancia de la clase es creada.
         super().__init__() #llama al constructor de la clase QMainWindow, para inicializar las funcionalidades básicas de la ventana principal de la app.
@@ -57,7 +40,7 @@ class MainWindow(QMainWindow):  #Clase MainWindow heredada de QMainWindow, que e
             widgets[i].setCurrentText(controlActual.get(claves[i]))
 
     def guardarControl(self):
-        dialogo = Dialog()
+        dialogo = Dialog(controles, widgets, comboBox)
         dialogo.exec_()  
         
     def eliminarControl(self):
