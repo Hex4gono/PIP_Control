@@ -1,10 +1,8 @@
 import sys
-from PyQt5.QtWidgets import QApplication, QMainWindow, QDialog
+from PyQt5.QtWidgets import QApplication, QMainWindow
 import json
 import pyautogui # type: ignore
 from GUI.menu import Ui_MainWindow
-from GUI.nameprompt import Ui_Dialog
-from GUI.promptconfirmar import Ui_ConfirmarDialog
 from arduino.comunicador import arduino
 from confirmarDialog import ConfirmarDialog
 from nombreDialog import Dialog

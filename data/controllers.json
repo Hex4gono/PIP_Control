@@ -1,24 +1,4 @@
 {
-    "d": {
-        "XNegCar": "mouseUp",
-        "XPosCar": "F6",
-        "YNegCar": "mouseUp",
-        "YPosCar": "mouseUp",
-        "XNegCar_2": "mouseUp",
-        "XPosCar_2": "mouseUp",
-        "YNegCar_2": "mouseUp",
-        "YPosCar_2": "mouseUp",
-        "Boton1Sel": "mouseUp",
-        "Boton2Sel": "mouseUp",
-        "Boton3Sel": "mouseUp",
-        "Boton4Sel": "mouseUp",
-        "Boton5Sel": "mouseUp",
-        "Boton6Sel": "mouseUp",
-        "Boton7Sel": "mouseUp",
-        "Boton8Sel": "mouseUp",
-        "L3Sel": "mouseUp",
-        "R3Sel": "mouseUp"
-    },
     "isaac": {
         "XNegCar": "a",
         "XPosCar": "d",
@@ -39,26 +19,6 @@
         "L3Sel": "p",
         "R3Sel": "enter"
     },
-    "wasd": {
-        "XNegCar": "w",
-        "XPosCar": "s",
-        "YNegCar": "down",
-        "YPosCar": "a",
-        "XNegCar_2": "mouseUp",
-        "XPosCar_2": "mouseUp",
-        "YNegCar_2": "mouseUp",
-        "YPosCar_2": "mouseUp",
-        "Boton1Sel": "mouseUp",
-        "Boton2Sel": "mouseUp",
-        "Boton3Sel": "mouseUp",
-        "Boton4Sel": "mouseUp",
-        "Boton5Sel": "mouseUp",
-        "Boton6Sel": "mouseUp",
-        "Boton7Sel": "mouseUp",
-        "Boton8Sel": "mouseUp",
-        "L3Sel": "mouseUp",
-        "R3Sel": "mouseUp"
-    },
     "minecraft": {
         "XNegCar": "a",
         "XPosCar": "d",
@@ -78,5 +38,25 @@
         "Boton8Sel": "spacebar",
         "L3Sel": "mouseClickLeft",
         "R3Sel": "mouseClickRight"
+    },
+    "wasd": {
+        "XNegCar": "w",
+        "XPosCar": "s",
+        "YNegCar": "down",
+        "YPosCar": "a",
+        "XNegCar_2": "mouseUp",
+        "XPosCar_2": "mouseUp",
+        "YNegCar_2": "mouseUp",
+        "YPosCar_2": "mouseUp",
+        "Boton1Sel": "mouseUp",
+        "Boton2Sel": "mouseUp",
+        "Boton3Sel": "mouseUp",
+        "Boton4Sel": "mouseUp",
+        "Boton5Sel": "mouseUp",
+        "Boton6Sel": "mouseUp",
+        "Boton7Sel": "mouseUp",
+        "Boton8Sel": "mouseUp",
+        "L3Sel": "mouseUp",
+        "R3Sel": "mouseUp"
     }
 }
