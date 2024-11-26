@@ -9,6 +9,7 @@ from GUI.promptconfirmar import Ui_ConfirmarDialog
 from arduino.comunicador import arduino
 
 with open("data/controllers.json", "r") as file:
+    global controles
     controles = json.load(file)
     controles = dict(sorted(controles.items()))
 caracteres = ['mouseUp','mouseDown','mouseRight','mouseLeft','mouseClickLeft','mouseClickRight','up', 'down', 'right', 'left', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ',', '.', '-', '_', '!', '?', '@', '#', '$', '%', '^', '&', '*', '(', ')', '[', ']', '{', '}', '<', '>', '/', '\\', '|', '+', '=', ':', ';', '"', '\'']
@@ -62,16 +63,16 @@ class MainWindow(QMainWindow):  #Clase MainWindow heredada de QMainWindow, que e
         comboBox = self.ui.controlesComboBox
         comboBox.addItems(controles.keys())
     def sortearControl(self):
-        if self.ui.SortButton.text == "A-Z":
+        if self.ui.SortButton.text() == "A-Z":
             self.ui.SortButton.setText("Z-A")
-            comboBox.clear()
-            controles = dict(sorted(controles.items(),reverse=True))
-            comboBox.addItems(controles.keys())
+            claves_ordenadas = sorted(controles.keys(), reverse=True)  # Orden descendente
         else:
             self.ui.SortButton.setText("A-Z")
-            comboBox.clear()
-            controles = dict(sorted(controles.items()))
-            comboBox.addItems(controles.keys())
+            claves_ordenadas = sorted(controles.keys())  # Orden ascendente
+
+        comboBox.clear()
+        comboBox.addItems(claves_ordenadas)  # Agrega las claves ordenadas
+
         
     def cargarControl(self):
         controlActual = controles[self.ui.controlesComboBox.currentText()]
@@ -82,31 +83,23 @@ class MainWindow(QMainWindow):  #Clase MainWindow heredada de QMainWindow, que e
         claves = ["XNegCar", "XPosCar", "YNegCar", "YPosCar","XNegCar_2", "XPosCar_2", "YNegCar_2", "YPosCar_2","Boton1Sel", "Boton2Sel", "Boton3Sel", "Boton4Sel","Boton5Sel", "Boton6Sel", "Boton7Sel", "Boton8Sel","L3Sel","R3Sel"]
         for i in range(len(widgets)):
             widgets[i].setCurrentText(controlActual.get(claves[i]))
-  
 
     def guardarControl(self):
         dialogo = Dialog()
         dialogo.exec_()  
-        
     def eliminarControl(self):
         a = ConfirmarDialog() 
         a.exec_()  
-    
     def desactivarControl(self):
         self.setEnabled(False)
         self.ui.AceptarButton.setEnabled(True)
         self.coso.cerrarComunicacion()
-    
     def aplicarControl(self):
         self.setEnabled(False)
         self.ui.CerrarButton.setEnabled(True)
         self.coso = arduino()
         self.coso.empezarComunicacion()
-        
-    
-    
-     
-if __name__ == "__main__": #checkea si el script está siendo ejecutado como el prog principal (no importado como un modulo).
+if __name__ == "__main__": #checkea si el script está siendo ejecutado como el prog principal (no importado como un modulo).i
     app = QApplication(sys.argv)    # Crea un Qt widget, la cual va ser nuestra ventana.
     window = MainWindow() #crea una intancia de MainWindow 
     window.show()   # IMPORTANT!!!!! la ventanas estan ocultas por defecto.
