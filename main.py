@@ -10,8 +10,7 @@ from arduino.comunicador import arduino
 
 with open("data/controllers.json", "r") as file:
     global controles
-    controles = json.load(file)
-    controles = dict(sorted(controles.items()))
+    controles = dict(sorted(json.load(file).items()))
 caracteres = ['mouseUp','mouseDown','mouseRight','mouseLeft','mouseClickLeft','mouseClickRight','shift','control','tab','printscreen','F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9', 'F10', 'F11', 'F12','up', 'down', 'right', 'left', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ',', '.', '-', '_', '!', '?', '@', '#', '$', '%', '^', '&', '*', '(', ')', '[', ']', '{', '}', '<', '>', '/', '\\', '|', '+', '=', ':', ';', '"', '\'']
 class ConfirmarDialog(QDialog):
     def __init__(self):
@@ -19,23 +18,22 @@ class ConfirmarDialog(QDialog):
         self.ui = Ui_ConfirmarDialog()
         self.ui.setupUi(self)
         self.setGeometry(300, 300, 300, 100)
-        
+
     def eliminacionConfirmada(self):
         controles.pop(comboBox.currentText())
         with open("data/controllers.json",'w') as file:
             json.dump(controles, file, indent = 4)
         comboBox.clear()
         comboBox.addItems(controles.keys())
-    
+
 class Dialog(QDialog):
     def __init__(self):
         super().__init__()
         self.ui = Ui_Dialog()
         self.ui.setupUi(self)
-        self.setWindowTitle('Ventana Secundaria')
+        self.setWindowTitle("Guardar Configuración")
         self.setGeometry(300, 300, 250, 150)
 
-        
     def aceptarguardar(self):
         nombreconfig = self.ui.nombreguardar.text()
         x = {nombreconfig:{}}
@@ -44,10 +42,8 @@ class Dialog(QDialog):
         controles.update(x)
         with open("data/controllers.json",'w') as file:
             json.dump(controles, file, indent = 4)
-        
         comboBox.clear()
         comboBox.addItems(controles.keys())
-
 class MainWindow(QMainWindow):  #Clase MainWindow heredada de QMainWindow, que es una clase de PyQt para crear la ventana principal de la app.
     def __init__(self): #constructor method. Se ejuecuta cuando la instancia de la clase es creada.
         super().__init__() #llama al constructor de la clase QMainWindow, para inicializar las funcionalidades básicas de la ventana principal de la app.
@@ -55,31 +51,21 @@ class MainWindow(QMainWindow):  #Clase MainWindow heredada de QMainWindow, que e
         self.ui.setupUi(self) #llama al método setupUi() de la instancia Ui_MainWindow, para setear los componenetes de la interfaz del usuario dentro de main window.
         self.ui.CerrarButton.setGeometry(271,1,161,23)
         # Haces un array con todos los caracteres seleccionables y despues la pones de accion en todos los combo box
-        global widgets 
+        global widgets, comboBox
         widgets = [self.ui.XNegCar,self.ui.XPosCar,self.ui.YNegCar,self.ui.YPosCar,self.ui.XNegCar_2,self.ui.XPosCar_2,self.ui.YNegCar_2,self.ui.YPosCar_2,self.ui.Boton1Sel,self.ui.Boton2Sel,self.ui.Boton3Sel,self.ui.Boton4Sel,self.ui.Boton5Sel,self.ui.Boton6Sel,self.ui.Boton7Sel,self.ui.Boton8Sel,self.ui.L3Sel,self.ui.R3Sel]
         for i in widgets:
             i.addItems(caracteres)
-        global comboBox
         comboBox = self.ui.controlesComboBox
         comboBox.addItems(controles.keys())
-        
+
     def sortearControl(self):
-        if self.ui.SortButton.text() == "A-Z":
-            self.ui.SortButton.setText("Z-A")
-            claves_ordenadas = sorted(controles.keys(), reverse=True)
-        else:
-            self.ui.SortButton.setText("A-Z")
-            claves_ordenadas = sorted(controles.keys())
+        orden_inverso = self.ui.SortButton.text() == "A-Z"
+        self.ui.SortButton.setText("Z-A" if orden_inverso else "A-Z")
         comboBox.clear()
-        comboBox.addItems(claves_ordenadas)
-        
-        
+        comboBox.addItems(sorted(controles.keys(), reverse=orden_inverso))
+           
     def cargarControl(self):
-        controlActual = controles[self.ui.controlesComboBox.currentText()]
-        for tecla in controlActual.values():
-            if tecla not in caracteres:
-                print("la tecla en el json no es valida, no deberia estar pasando esto")
-                break
+        controlActual = controles.get(self.ui.controlesComboBox.currentText(), {})
         claves = ["XNegCar", "XPosCar", "YNegCar", "YPosCar","XNegCar_2", "XPosCar_2", "YNegCar_2", "YPosCar_2","Boton1Sel", "Boton2Sel", "Boton3Sel", "Boton4Sel","Boton5Sel", "Boton6Sel", "Boton7Sel", "Boton8Sel","L3Sel","R3Sel"]
         for i in range(len(widgets)):
             widgets[i].setCurrentText(controlActual.get(claves[i]))
