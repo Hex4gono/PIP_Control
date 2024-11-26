@@ -28,10 +28,35 @@
       <layout class="QHBoxLayout" name="ConfigBox">
        <item>
         <widget class="QComboBox" name="controlesComboBox">
+         <property name="sizePolicy">
+          <sizepolicy hsizetype="Minimum" vsizetype="Fixed">
+           <horstretch>0</horstretch>
+           <verstretch>0</verstretch>
+          </sizepolicy>
+         </property>
+         <property name="minimumSize">
+          <size>
+           <width>300</width>
+           <height>0</height>
+          </size>
+         </property>
          <property name="font">
           <font>
            <pointsize>13</pointsize>
           </font>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QPushButton" name="pushButton">
+         <property name="maximumSize">
+          <size>
+           <width>30</width>
+           <height>16777215</height>
+          </size>
+         </property>
+         <property name="text">
+          <string>A-Z</string>
          </property>
         </widget>
        </item>
@@ -87,11 +112,57 @@
       </spacer>
      </item>
      <item>
+      <layout class="QHBoxLayout" name="horizontalLayout_5">
+       <item>
+        <widget class="QLabel" name="label">
+         <property name="text">
+          <string>Joystick Izquierdo</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+       <item>
+        <widget class="QLabel" name="label_2">
+         <property name="layoutDirection">
+          <enum>Qt::LeftToRight</enum>
+         </property>
+         <property name="text">
+          <string>Joystick Derecho</string>
+         </property>
+         <property name="alignment">
+          <set>Qt::AlignCenter</set>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </item>
+     <item>
       <layout class="QHBoxLayout" name="JSBox">
+       <item>
+        <spacer name="horizontalSpacer_4">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
        <item>
         <layout class="QGridLayout" name="JSI">
          <item row="1" column="2">
           <widget class="QComboBox" name="YNegCar">
+           <property name="maximumSize">
+            <size>
+             <width>50</width>
+             <height>16777215</height>
+            </size>
+           </property>
            <property name="font">
             <font>
              <pointsize>13</pointsize>
@@ -101,6 +172,12 @@
          </item>
          <item row="0" column="1">
           <widget class="QComboBox" name="XNegCar">
+           <property name="maximumSize">
+            <size>
+             <width>50</width>
+             <height>16777215</height>
+            </size>
+           </property>
            <property name="font">
             <font>
              <pointsize>13</pointsize>
@@ -110,6 +187,12 @@
          </item>
          <item row="1" column="0">
           <widget class="QComboBox" name="YPosCar">
+           <property name="maximumSize">
+            <size>
+             <width>50</width>
+             <height>16777215</height>
+            </size>
+           </property>
            <property name="font">
             <font>
              <pointsize>13</pointsize>
@@ -119,6 +202,12 @@
          </item>
          <item row="2" column="1">
           <widget class="QComboBox" name="XPosCar">
+           <property name="maximumSize">
+            <size>
+             <width>50</width>
+             <height>16777215</height>
+            </size>
+           </property>
            <property name="font">
             <font>
              <pointsize>13</pointsize>
@@ -128,6 +217,12 @@
          </item>
          <item row="1" column="1">
           <widget class="QComboBox" name="L3Sel">
+           <property name="maximumSize">
+            <size>
+             <width>50</width>
+             <height>16777215</height>
+            </size>
+           </property>
            <property name="font">
             <font>
              <pointsize>13</pointsize>
@@ -154,6 +249,12 @@
         <layout class="QGridLayout" name="JSI_2">
          <item row="1" column="2">
           <widget class="QComboBox" name="YNegCar_2">
+           <property name="maximumSize">
+            <size>
+             <width>50</width>
+             <height>16777215</height>
+            </size>
+           </property>
            <property name="font">
             <font>
              <pointsize>13</pointsize>
@@ -163,6 +264,12 @@
          </item>
          <item row="2" column="1">
           <widget class="QComboBox" name="XPosCar_2">
+           <property name="maximumSize">
+            <size>
+             <width>50</width>
+             <height>16777215</height>
+            </size>
+           </property>
            <property name="font">
             <font>
              <pointsize>13</pointsize>
@@ -172,6 +279,12 @@
          </item>
          <item row="0" column="1">
           <widget class="QComboBox" name="XNegCar_2">
+           <property name="maximumSize">
+            <size>
+             <width>50</width>
+             <height>16777215</height>
+            </size>
+           </property>
            <property name="font">
             <font>
              <pointsize>13</pointsize>
@@ -181,6 +294,12 @@
          </item>
          <item row="1" column="0">
           <widget class="QComboBox" name="YPosCar_2">
+           <property name="maximumSize">
+            <size>
+             <width>50</width>
+             <height>16777215</height>
+            </size>
+           </property>
            <property name="font">
             <font>
              <pointsize>13</pointsize>
@@ -190,6 +309,12 @@
          </item>
          <item row="1" column="1">
           <widget class="QComboBox" name="R3Sel">
+           <property name="maximumSize">
+            <size>
+             <width>50</width>
+             <height>16777215</height>
+            </size>
+           </property>
            <property name="font">
             <font>
              <pointsize>13</pointsize>
@@ -198,6 +323,19 @@
           </widget>
          </item>
         </layout>
+       </item>
+       <item>
+        <spacer name="horizontalSpacer_5">
+         <property name="orientation">
+          <enum>Qt::Horizontal</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>40</width>
+           <height>20</height>
+          </size>
+         </property>
+        </spacer>
        </item>
       </layout>
      </item>
