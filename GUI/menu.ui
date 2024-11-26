@@ -48,10 +48,10 @@
         </widget>
        </item>
        <item>
-        <widget class="QPushButton" name="pushButton">
+        <widget class="QPushButton" name="SortButton">
          <property name="maximumSize">
           <size>
-           <width>30</width>
+           <width>40</width>
            <height>16777215</height>
           </size>
          </property>
@@ -159,7 +159,7 @@
           <widget class="QComboBox" name="YNegCar">
            <property name="maximumSize">
             <size>
-             <width>50</width>
+             <width>16777215</width>
              <height>16777215</height>
             </size>
            </property>
@@ -174,7 +174,7 @@
           <widget class="QComboBox" name="XNegCar">
            <property name="maximumSize">
             <size>
-             <width>50</width>
+             <width>16777215</width>
              <height>16777215</height>
             </size>
            </property>
@@ -189,7 +189,7 @@
           <widget class="QComboBox" name="YPosCar">
            <property name="maximumSize">
             <size>
-             <width>50</width>
+             <width>16777215</width>
              <height>16777215</height>
             </size>
            </property>
@@ -204,7 +204,7 @@
           <widget class="QComboBox" name="XPosCar">
            <property name="maximumSize">
             <size>
-             <width>50</width>
+             <width>16777215</width>
              <height>16777215</height>
             </size>
            </property>
@@ -219,7 +219,7 @@
           <widget class="QComboBox" name="L3Sel">
            <property name="maximumSize">
             <size>
-             <width>50</width>
+             <width>16777215</width>
              <height>16777215</height>
             </size>
            </property>
@@ -251,7 +251,7 @@
           <widget class="QComboBox" name="YNegCar_2">
            <property name="maximumSize">
             <size>
-             <width>50</width>
+             <width>16777215</width>
              <height>16777215</height>
             </size>
            </property>
@@ -266,7 +266,7 @@
           <widget class="QComboBox" name="XPosCar_2">
            <property name="maximumSize">
             <size>
-             <width>50</width>
+             <width>16777215</width>
              <height>16777215</height>
             </size>
            </property>
@@ -281,7 +281,7 @@
           <widget class="QComboBox" name="XNegCar_2">
            <property name="maximumSize">
             <size>
-             <width>50</width>
+             <width>16777215</width>
              <height>16777215</height>
             </size>
            </property>
@@ -296,7 +296,7 @@
           <widget class="QComboBox" name="YPosCar_2">
            <property name="maximumSize">
             <size>
-             <width>50</width>
+             <width>16777215</width>
              <height>16777215</height>
             </size>
            </property>
@@ -311,7 +311,7 @@
           <widget class="QComboBox" name="R3Sel">
            <property name="maximumSize">
             <size>
-             <width>50</width>
+             <width>16777215</width>
              <height>16777215</height>
             </size>
            </property>
@@ -648,8 +648,8 @@
    <slot>guardarControl()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>652</x>
-     <y>22</y>
+     <x>865</x>
+     <y>24</y>
     </hint>
     <hint type="destinationlabel">
      <x>683</x>
@@ -664,8 +664,8 @@
    <slot>eliminarControl()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>305</x>
-     <y>25</y>
+     <x>524</x>
+     <y>27</y>
     </hint>
     <hint type="destinationlabel">
      <x>392</x>
@@ -680,8 +680,8 @@
    <slot>aplicarControl()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>435</x>
-     <y>440</y>
+     <x>581</x>
+     <y>558</y>
     </hint>
     <hint type="destinationlabel">
      <x>548</x>
@@ -696,12 +696,28 @@
    <slot>desactivarControl()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>342</x>
-     <y>442</y>
+     <x>373</x>
+     <y>558</y>
     </hint>
     <hint type="destinationlabel">
      <x>436</x>
      <y>520</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>SortButton</sender>
+   <signal>released()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>sortearControl()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>347</x>
+     <y>25</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>301</x>
+     <y>71</y>
     </hint>
    </hints>
   </connection>
@@ -712,5 +728,6 @@
   <slot>eliminarControl()</slot>
   <slot>aplicarControl()</slot>
   <slot>desactivarControl()</slot>
+  <slot>sortearControl()</slot>
  </slots>
 </ui>
