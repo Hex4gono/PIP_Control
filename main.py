@@ -7,25 +7,11 @@ from GUI.menu import Ui_MainWindow
 from GUI.nameprompt import Ui_Dialog
 from GUI.promptconfirmar import Ui_ConfirmarDialog
 from arduino.comunicador import arduino
-
+from confirmarDialog import ConfirmarDialog
 with open("data/controllers.json", "r") as file:
     global controles
     controles = dict(sorted(json.load(file).items()))
 caracteres = ['mouseUp','mouseDown','mouseRight','mouseLeft','mouseClickLeft','mouseClickRight','shift','control','tab','printscreen','F1', 'F2', 'F3', 'F4', 'F5', 'F6', 'F7', 'F8', 'F9', 'F10', 'F11', 'F12','up', 'down', 'right', 'left', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ',', '.', '-', '_', '!', '?', '@', '#', '$', '%', '^', '&', '*', '(', ')', '[', ']', '{', '}', '<', '>', '/', '\\', '|', '+', '=', ':', ';', '"', '\'']
-class ConfirmarDialog(QDialog):
-    def __init__(self):
-        super().__init__()
-        self.ui = Ui_ConfirmarDialog()
-        self.ui.setupUi(self)
-        self.setGeometry(300, 300, 300, 100)
-
-    def eliminacionConfirmada(self):
-        controles.pop(comboBox.currentText())
-        with open("data/controllers.json",'w') as file:
-            json.dump(controles, file, indent = 4)
-        comboBox.clear()
-        comboBox.addItems(controles.keys())
-
 class Dialog(QDialog):
     def __init__(self):
         super().__init__()
@@ -75,8 +61,8 @@ class MainWindow(QMainWindow):  #Clase MainWindow heredada de QMainWindow, que e
         dialogo.exec_()  
         
     def eliminarControl(self):
-        a = ConfirmarDialog() 
-        a.exec_()  
+        confirmar = ConfirmarDialog(controles, self.ui.controlesComboBox)
+        confirmar.exec_()
         
     def desactivarControl(self):
         self.setEnabled(False)

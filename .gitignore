@@ -2,3 +2,4 @@
 /arduino/__pycache__
 /GUI/__pycache__
 /entorno
+*.pyc
