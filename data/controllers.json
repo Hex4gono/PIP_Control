@@ -1,24 +1,4 @@
 {
-    "": {
-        "XNegCar": "mouseUp",
-        "XPosCar": "mouseUp",
-        "YNegCar": "mouseUp",
-        "YPosCar": "mouseUp",
-        "XNegCar_2": "mouseUp",
-        "XPosCar_2": "mouseUp",
-        "YNegCar_2": "mouseUp",
-        "YPosCar_2": "mouseUp",
-        "Boton1Sel": "mouseUp",
-        "Boton2Sel": "mouseUp",
-        "Boton3Sel": "mouseUp",
-        "Boton4Sel": "mouseUp",
-        "Boton5Sel": "mouseUp",
-        "Boton6Sel": "mouseUp",
-        "Boton7Sel": "mouseUp",
-        "Boton8Sel": "mouseUp",
-        "L3Sel": "mouseUp",
-        "R3Sel": "mouseUp"
-    },
     "a": {
         "XNegCar": "d",
         "XPosCar": "mouseUp",
@@ -39,27 +19,7 @@
         "L3Sel": "mouseUp",
         "R3Sel": "mouseUp"
     },
-    "ad": {
-        "XNegCar": "mouseUp",
-        "XPosCar": "mouseUp",
-        "YNegCar": "mouseUp",
-        "YPosCar": "mouseUp",
-        "XNegCar_2": "mouseUp",
-        "XPosCar_2": "mouseUp",
-        "YNegCar_2": "mouseUp",
-        "YPosCar_2": "mouseUp",
-        "Boton1Sel": "mouseUp",
-        "Boton2Sel": "mouseUp",
-        "Boton3Sel": "mouseUp",
-        "Boton4Sel": "mouseUp",
-        "Boton5Sel": "mouseUp",
-        "Boton6Sel": "mouseUp",
-        "Boton7Sel": "mouseUp",
-        "Boton8Sel": "mouseUp",
-        "L3Sel": "mouseUp",
-        "R3Sel": "mouseUp"
-    },
-    "ba": {
+    "b": {
         "XNegCar": "mouseUp",
         "XPosCar": "mouseUp",
         "YNegCar": "mouseUp",
@@ -120,26 +80,6 @@
         "R3Sel": "mouseUp"
     },
     "da": {
-        "XNegCar": "mouseUp",
-        "XPosCar": "mouseUp",
-        "YNegCar": "mouseUp",
-        "YPosCar": "mouseUp",
-        "XNegCar_2": "mouseUp",
-        "XPosCar_2": "mouseUp",
-        "YNegCar_2": "mouseUp",
-        "YPosCar_2": "mouseUp",
-        "Boton1Sel": "mouseUp",
-        "Boton2Sel": "mouseUp",
-        "Boton3Sel": "mouseUp",
-        "Boton4Sel": "mouseUp",
-        "Boton5Sel": "mouseUp",
-        "Boton6Sel": "mouseUp",
-        "Boton7Sel": "mouseUp",
-        "Boton8Sel": "mouseUp",
-        "L3Sel": "mouseUp",
-        "R3Sel": "mouseUp"
-    },
-    "b": {
         "XNegCar": "mouseUp",
         "XPosCar": "mouseUp",
         "YNegCar": "mouseUp",
