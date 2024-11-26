@@ -118,6 +118,7 @@ class Ui_MainWindow(object):
         font = QtGui.QFont()
         font.setPointSize(13)
         self.L3Sel.setFont(font)
+        self.L3Sel.setMaxVisibleItems(2)
         self.L3Sel.setObjectName("L3Sel")
         self.JSI.addWidget(self.L3Sel, 1, 1, 1, 1)
         self.XNegCar = QtWidgets.QComboBox(self.verticalLayoutWidget_5)

@@ -8,6 +8,8 @@ from GUI.promptconfirmar import Ui_ConfirmarDialog
 from arduino.comunicador import arduino
 from confirmarDialog import ConfirmarDialog
 from nombreDialog import Dialog
+
+
 with open("data/controllers.json", "r") as file:
     global controles
     controles = dict(sorted(json.load(file).items()))
@@ -23,6 +25,7 @@ class MainWindow(QMainWindow):  #Clase MainWindow heredada de QMainWindow, que e
         widgets = [self.ui.XNegCar,self.ui.XPosCar,self.ui.YNegCar,self.ui.YPosCar,self.ui.XNegCar_2,self.ui.XPosCar_2,self.ui.YNegCar_2,self.ui.YPosCar_2,self.ui.Boton1Sel,self.ui.Boton2Sel,self.ui.Boton3Sel,self.ui.Boton4Sel,self.ui.Boton5Sel,self.ui.Boton6Sel,self.ui.Boton7Sel,self.ui.Boton8Sel,self.ui.L3Sel,self.ui.R3Sel]
         for i in widgets:
             i.addItems(caracteres)
+            i.setMaxVisibleItems(10)
         comboBox = self.ui.controlesComboBox
         comboBox.addItems(controles.keys())
 
@@ -72,6 +75,7 @@ class MainWindow(QMainWindow):  #Clase MainWindow heredada de QMainWindow, que e
             
 if __name__ == "__main__": #checkea si el script está siendo ejecutado como el prog principal (no importado como un modulo).i
     app = QApplication(sys.argv)    # Crea un Qt widget, la cual va ser nuestra ventana.
+    app.setStyle("Windows")
     window = MainWindow() #crea una intancia de MainWindow 
     window.show()   # IMPORTANT!!!!! la ventanas estan ocultas por defecto.
     sys.exit(app.exec_()) # Start the event loop.
