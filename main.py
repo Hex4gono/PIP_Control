@@ -60,7 +60,7 @@ class MainWindow(QMainWindow):  #Clase MainWindow heredada de QMainWindow, que e
         self.ui.CerrarButton.setEnabled(True)
         temp = []
         for e in widgets:
-            temp.append(e.currentText())
+            temp.append(e.currentText()) # agarro todos los textos de los combobox
         global plaquinia
         plaquinia = arduino(temp)
         plaquinia.empezarComunicacion()
@@ -87,8 +87,8 @@ if __name__ == "__main__": #checkea si el script está siendo ejecutado como el 
     window.show()   # IMPORTANT!!!!! la ventanas estan ocultas por defecto.
     sys.exit(app.exec_()) # Start the event loop.
 
-# event loop?
-
+# event loop?    eee no se
+"""
 while True:
     if controlActivado:
-        plaquinia.recibirTeclas()
+        plaquinia.recibirTeclas()"""

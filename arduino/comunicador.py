@@ -32,11 +32,12 @@ class arduino:
         for tecla in self.teclasList:
             if tecla == 1:
                 self.teclasASimular.append(True)
-            elif abs(tecla) > 200:
+            elif abs(tecla) > 400:
                 self.teclasASimular.append(True)
             else:
                 self.teclasASimular.append(False)
         return self.teclasASimular, self.teclasList
+    
     
     def simularTeclas(self, inputs, inputKeys):
         for i in range(0, len(inputKeys)):
