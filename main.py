@@ -28,10 +28,11 @@ class MainWindow(QMainWindow):  #Clase MainWindow heredada de QMainWindow, que e
         comboBox = self.ui.controlesComboBox
         comboBox.addItems(controles.keys())
         
-        self.timerArduino = QTimer(self)
-        self.timerArduino.start(16)  # 60 fps (esperemos que ande al mismo tienpo que el arduino por arte de magia)
+        self.timer = QTimer()
         if self.controlActivado:
-            self.timerArduino.timeout.connect(self.refrescarArduino)
+            self.timer.timeout.connect(self.refrescarArduino)  # execute `display_time`
+        self.timer.setInterval(16)  # 1000ms = 1s
+        self.timer.start()
         
         
     def sortearControl(self):

@@ -10,14 +10,10 @@ class arduino:
         self.inputs = inputs
     
     def empezarComunicacion(self,port = 'COM1', baudRate = 9600):
-        print(f"asndakjsdhkasjdhkajsdn {port} {baudRate}")
-        pass
-        """        
         try:
             self.ser = serial.Serial(port,baudRate)
         except Exception as error:
             print(f"no se pudo abrir la comunicacion con puerto {port}, error: {error}")
-        """
             
     def cerrarComunicacion(self):
         try: 
