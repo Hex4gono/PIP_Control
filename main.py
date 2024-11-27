@@ -18,8 +18,8 @@ class MainWindow(QMainWindow):  #Clase MainWindow heredada de QMainWindow, que e
         self.ui.setupUi(self) #llama al método setupUi() de la instancia Ui_MainWindow, para setear los componenetes de la interfaz del usuario dentro de main window.
         self.ui.CerrarButton.setGeometry(271,1,161,23)
         # Haces un array con todos los caracteres seleccionables y despues la pones de accion en todos los combo box
-        global widgets, comboBox
-        widgets = [self.ui.XNegCar,self.ui.XPosCar,self.ui.YNegCar,self.ui.YPosCar,self.ui.XNegCar_2,self.ui.XPosCar_2,self.ui.YNegCar_2,self.ui.YPosCar_2,self.ui.Boton1Sel,self.ui.Boton2Sel,self.ui.Boton3Sel,self.ui.Boton4Sel,self.ui.Boton5Sel,self.ui.Boton6Sel,self.ui.Boton7Sel,self.ui.Boton8Sel,self.ui.L3Sel,self.ui.R3Sel]
+        global widgets, comboBox, controlActivado
+        widgets = [self.ui.XNegCar,self.ui.XPosCar,self.ui.YNegCar,self.ui.YPosCar,self.ui.XNegCar_2,self.ui.XPosCar_2,self.ui.YNegCar_2,self.ui.YPosCar_2,self.ui.L3Sel,self.ui.R3Sel,self.ui.Boton1Sel,self.ui.Boton2Sel,self.ui.Boton3Sel,self.ui.Boton4Sel,self.ui.Boton5Sel,self.ui.Boton6Sel,self.ui.Boton7Sel,self.ui.Boton8Sel]
         for i in widgets:
             i.addItems(caracteres)
             i.setMaxVisibleItems(10)
@@ -34,7 +34,7 @@ class MainWindow(QMainWindow):  #Clase MainWindow heredada de QMainWindow, que e
            
     def cargarControl(self):
         controlActual = controles.get(self.ui.controlesComboBox.currentText())
-        claves = ["XNegCar", "XPosCar", "YNegCar", "YPosCar","XNegCar_2", "XPosCar_2", "YNegCar_2", "YPosCar_2","Boton1Sel", "Boton2Sel", "Boton3Sel", "Boton4Sel","Boton5Sel", "Boton6Sel", "Boton7Sel", "Boton8Sel","L3Sel","R3Sel"]
+        claves = ["XNegCar", "XPosCar", "YNegCar", "YPosCar","XNegCar_2", "XPosCar_2", "YNegCar_2", "YPosCar_2","L3Sel","R3Sel","Boton1Sel", "Boton2Sel", "Boton3Sel", "Boton4Sel","Boton5Sel", "Boton6Sel", "Boton7Sel", "Boton8Sel"]
         for i in range(len(widgets)):
             widgets[i].setCurrentText(controlActual.get(claves[i]))
 
@@ -47,15 +47,26 @@ class MainWindow(QMainWindow):  #Clase MainWindow heredada de QMainWindow, que e
         confirmar.exec_()
         
     def desactivarControl(self):
+        controlActivado = False
         self.setEnabled(False)
         self.ui.AceptarButton.setEnabled(True)
-        self.coso.cerrarComunicacion()
+        plaquinia.cerrarComunicacion()
+        for e in widgets:
+            e.setEnabled(True)
         
     def aplicarControl(self):
+
+        contolActivado = True
         self.setEnabled(False)
         self.ui.CerrarButton.setEnabled(True)
-        self.coso = arduino()
-        self.coso.empezarComunicacion()
+        temp = []
+        for e in widgets:
+            temp.append(e.currentText())
+        global plaquinia
+        plaquinia = arduino(temp)
+        plaquinia.empezarComunicacion()
+        for e in widgets:
+            e.setEnabled(False)
         
     def buscarControl(self):
         aBuscar = self.ui.searchLineEdit.text()
@@ -76,3 +87,8 @@ if __name__ == "__main__": #checkea si el script está siendo ejecutado como el 
     window = MainWindow() #crea una intancia de MainWindow 
     window.show()   # IMPORTANT!!!!! la ventanas estan ocultas por defecto.
     sys.exit(app.exec_()) # Start the event loop.
+
+
+while True:
+    if controlActivado:
+        plaquinia.recibirTeclas()
