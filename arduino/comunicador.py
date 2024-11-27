@@ -1,6 +1,6 @@
 import serial # type: ignore
 import pyautogui # type: ignore
-
+from PyQt5.QtCore import QThread, pyqtSignal
 # aca voy a poner una clase para la conexion con arduino
 
 
@@ -10,14 +10,14 @@ class arduino:
         self.inputs = inputs
     
     def empezarComunicacion(self,port = 'COM1', baudRate = 9600):
-        while True:
-            try:
-                self.ser = serial.Serial(port,baudRate)
-            except Exception as error:
-                print(f"no se pudo abrir la comunicacion con puerto {port}, error: {error}")
-                port = input("Ingrese otro puerto : ")
-                continue
-            break
+        print(f"asndakjsdhkasjdhkajsdn {port} {baudRate}")
+        pass
+        """        
+        try:
+            self.ser = serial.Serial(port,baudRate)
+        except Exception as error:
+            print(f"no se pudo abrir la comunicacion con puerto {port}, error: {error}")
+        """
             
     def cerrarComunicacion(self):
         try: 
