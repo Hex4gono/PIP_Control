@@ -5,6 +5,8 @@ from GUI.menu import Ui_MainWindow
 from arduino.comunicador import arduino
 from confirmarDialog import ConfirmarDialog
 from nombreDialog import Dialog
+from PyQt5.QtCore import QTimer
+
 
 with open("data/controllers.json", "r") as file:
     global controles
@@ -17,14 +19,21 @@ class MainWindow(QMainWindow):  #Clase MainWindow heredada de QMainWindow, que e
         self.ui.setupUi(self) #llama al método setupUi() de la instancia Ui_MainWindow, para setear los componenetes de la interfaz del usuario dentro de main window.
         self.ui.CerrarButton.setGeometry(271,1,161,23)
         # Haces un array con todos los caracteres seleccionables y despues la pones de accion en todos los combo box
-        global widgets, comboBox, controlActivado
+        global widgets, comboBox
+        self.controlActivado = False
         widgets = [self.ui.XNegCar,self.ui.XPosCar,self.ui.YNegCar,self.ui.YPosCar,self.ui.XNegCar_2,self.ui.XPosCar_2,self.ui.YNegCar_2,self.ui.YPosCar_2,self.ui.L3Sel,self.ui.R3Sel,self.ui.Boton1Sel,self.ui.Boton2Sel,self.ui.Boton3Sel,self.ui.Boton4Sel,self.ui.Boton5Sel,self.ui.Boton6Sel,self.ui.Boton7Sel,self.ui.Boton8Sel]
         for i in widgets:
             i.addItems(caracteres)
             i.setMaxVisibleItems(10)
         comboBox = self.ui.controlesComboBox
         comboBox.addItems(controles.keys())
-
+        
+        self.timerArduino = QTimer(self)
+        self.timerArduino.start(16)  # 60 fps (esperemos que ande al mismo tienpo que el arduino por arte de magia)
+        if self.controlActivado:
+            self.timerArduino.timeout.connect(self.refrescarArduino)
+        
+        
     def sortearControl(self):
         orden_inverso = self.ui.SortButton.text() == "A-Z"
         self.ui.SortButton.setText("Z-A" if orden_inverso else "A-Z")
@@ -46,7 +55,7 @@ class MainWindow(QMainWindow):  #Clase MainWindow heredada de QMainWindow, que e
         confirmar.exec_()
         
     def desactivarControl(self):
-        controlActivado = False
+        self.controlActivado = False
         self.setEnabled(False)
         self.ui.AceptarButton.setEnabled(True)
         plaquinia.cerrarComunicacion()
@@ -55,7 +64,7 @@ class MainWindow(QMainWindow):  #Clase MainWindow heredada de QMainWindow, que e
         
     def aplicarControl(self):
 
-        contolActivado = True
+        self.controlActivado = True
         self.setEnabled(False)
         self.ui.CerrarButton.setEnabled(True)
         temp = []
@@ -66,6 +75,11 @@ class MainWindow(QMainWindow):  #Clase MainWindow heredada de QMainWindow, que e
         plaquinia.empezarComunicacion()
         for e in widgets:
             e.setEnabled(False)
+      
+    def refrescarArduino(self):
+          if self.controlActivado:
+                plaquinia.simularTeclas(plaquinia.recibirTeclas())
+              
         
     def buscarControl(self):
         aBuscar = self.ui.searchLineEdit.text()

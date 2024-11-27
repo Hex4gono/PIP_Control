@@ -44,31 +44,42 @@ class arduino:
             if inputs[i]:
                 if "mouse" in inputKeys[i]:
                     # mover el mouse
+                    
                     if "ClickLeft" in inputKeys[i]:
                         # clickear
-                        pyautogui.leftClick()
-                        continue
-                    
-                    elif "ClickRight" in inputKeys[i]:
-                        pyautogui.rightClick()
-                        continue
-                    
-                    else: # ineficiente pero tengo sueno
-                        if "Left" in inputKeys[i]:
-                            pyautogui.moveRel(-20)
+                        pyautogui.mouseDown(button="left")
+                        
+                    if "ClickRight" in inputKeys[i]:
+                        pyautogui.mouseDown(button="right")
+                        
+                    # ineficiente pero tengo sueno
+                    if "Left" in inputKeys[i]:
+                        pyautogui.moveRel(-20)
                             
-                        if "Right" in inputKeys[i]:
-                            pyautogui.moveRel(20)
+                    if "Right" in inputKeys[i]:
+                        pyautogui.moveRel(20)
+                        
+                    if "Up" in inputKeys[i]:
+                        pyautogui.moveRel(yOffset=-20)
                             
-                        if "Up" in inputKeys[i]:
-                            pyautogui.moveRel(yOffset=-20)
-                            
-                        if "Down" in inputKeys[i]:
-                            pyautogui.moveRel(yOffset=20)
+                    if "Down" in inputKeys[i]:
+                        pyautogui.moveRel(yOffset=20)
                         
                 else:
                     # tecla comun
-                    pyautogui.press(inputKeys[i])
+                    pyautogui.keyDown(inputKeys[i])
+                    
+            elif "mouse" in inputKeys[i]:
+                if "ClickLeft" in inputKeys[i]:
+                    # clickear
+                    pyautogui.mouseUp(button="left")
+                        
+                if "ClickRight" in inputKeys[i]:
+                    pyautogui.mouseUp(button="right")
+                    
+            else:
+                pyautogui.keyUp(inputKeys[i])
+                    
         
         
     
