@@ -87,6 +87,7 @@ if __name__ == "__main__": #checkea si el script está siendo ejecutado como el 
     window.show()   # IMPORTANT!!!!! la ventanas estan ocultas por defecto.
     sys.exit(app.exec_()) # Start the event loop.
 
+# event loop?
 
 while True:
     if controlActivado:

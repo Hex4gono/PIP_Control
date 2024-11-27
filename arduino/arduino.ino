@@ -22,8 +22,15 @@ void loop()
   // Leer pines analógicos  (el sizeof / size of es porque aparentemente c++ lee el tamano en bytes y no cant de elementos)
   for (int i = 0; i < sizeof(analogPins)  / sizeof(analogPins[0]) ; i++) 
   {
-    data += analogRead(analogPins[i]);
-    if (i < sizeof(analogPins) / sizeof(analogPins[0]) - 1) 
+    //hace falta revertir las coordenadas de uno de los joysticks por la forma del circuito
+    if (i == 0 || i == 1) // si estamos en la primera o segunda iteracion (js 1)
+    {
+      data += (1023 - analogRead(analogPins[i])) - 515;
+    } else {
+      data += analogRead(analogPins[i]) - 515;
+    }
+
+    if (i < sizeof(analogPins) / sizeof(analogPins[0]) - 1);
     {
       data += ", "; 
     }
