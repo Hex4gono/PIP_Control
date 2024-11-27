@@ -4,8 +4,8 @@ import serial # type: ignore
 
 
 class arduino:
-    def __init__(self):
-        pass
+    def __init__(self, inputs):
+        self.inputs = inputs
     
     def empezarComunicacion(self,port = 'COM8', baudRate = 9600):
         try:
@@ -20,11 +20,14 @@ class arduino:
             print("Error: se trato de cerrar un puerto no abierto previamente")
             
     def recibirTeclas(self):
-        self.teclasList = []
-        self.teclasString = self.ser.readLine()
-        for tecla in self.teclasString:
-            if tecla == "1":
-                self.teclasList.append(True)
+        # [l3,r3,botones(1-8),joysticks]
+        self.teclasASimular = []
+        self.teclasList = list(self.ser.readLine())
+        for tecla in self.teclasList:
+            if tecla == 1:
+                self.teclasASimular.append(True)
+            elif abs(tecla) > 50:
+                self.teclasASimular.append(True)
             else:
-                self.teclasList.append(False)
+                self.teclasASimular.append(False)
     
