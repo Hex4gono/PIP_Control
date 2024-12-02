@@ -74,7 +74,6 @@ class MainWindow(QMainWindow):  #Clase MainWindow heredada de QMainWindow, que e
     def aplicarControl(self):
 
         self.controlActivado = True
-        self.setEnabled(False)
         self.ui.CerrarButton.setEnabled(True)
         temp = []
         for e in widgets:

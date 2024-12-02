@@ -9,7 +9,7 @@ class ConfiguracionDialog(QDialog):
         self.ui.setupUi(self)
         self.setGeometry(300, 300, 300, 100)
         self.configDict = configDict
-        print(configDict)
+
         
         self.sens = configDict["sensibilidad"]
         self.zm = configDict["zona muerta"]
@@ -28,7 +28,7 @@ class ConfiguracionDialog(QDialog):
             txt.setText(str(self.sens))
             return
         
-        if self.sens < 1 or self.sens > 20:
+        if self.sens < 1 or self.sens > 200:
             return
         
         self.ui.sensibilidadSlider.setValue(self.sens)
@@ -62,4 +62,9 @@ class ConfiguracionDialog(QDialog):
         self.ui.ZMLineEdit.setText(str(self.zm))  
     
     def guardarConfig(self):
-        pass    
+        
+        with open("data/config.json", "w") as file:
+            self.configDict = {"sensibilidad" : self.sens, "zona muerta" : self.zm}
+            json.dump(self.configDict, file, indent = 4)
+            
+        self.close()

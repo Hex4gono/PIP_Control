@@ -15,6 +15,7 @@ class Dialog(QDialog):
         self.comboBox = comboBox
 
     def aceptarguardar(self):
+        
         nombreconfig = self.ui.nombreguardar.text()
         nueva_config = {nombreconfig: {}}
         for widget in self.widgets:
