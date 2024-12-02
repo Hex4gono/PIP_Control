@@ -9,6 +9,9 @@ class ConfiguracionDialog(QDialog):
         self.ui = Ui_Configuracion()
         self.ui.setupUi(self)
         self.setGeometry(300, 300, 300, 100)
+        print(configDict)
+        self.ui.sensibilidadLabel.setText(configDict["sensibilidad"])
+        self.ui.ZMLineEdit.setText(configDict["zona muerta"])
 
     def sensibilidadSelecField(self):
         pass

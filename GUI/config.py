@@ -14,7 +14,7 @@ from PyQt5 import QtCore, QtGui, QtWidgets
 class Ui_Configuracion(object):
     def setupUi(self, Configuracion):
         Configuracion.setObjectName("Configuracion")
-        Configuracion.resize(466, 342)
+        Configuracion.resize(413, 334)
         self.gridLayout = QtWidgets.QGridLayout(Configuracion)
         self.gridLayout.setObjectName("gridLayout")
         spacerItem = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
@@ -102,7 +102,6 @@ class Ui_Configuracion(object):
         sizePolicy.setHeightForWidth(self.ZMSlider.sizePolicy().hasHeightForWidth())
         self.ZMSlider.setSizePolicy(sizePolicy)
         self.ZMSlider.setMaximumSize(QtCore.QSize(500, 40))
-        self.ZMSlider.setMaximum(500)
         self.ZMSlider.setOrientation(QtCore.Qt.Horizontal)
         self.ZMSlider.setObjectName("ZMSlider")
         self.horizontalLayout_2.addWidget(self.ZMSlider)
@@ -120,7 +119,6 @@ class Ui_Configuracion(object):
 
         self.retranslateUi(Configuracion)
         self.buttonBox.rejected.connect(Configuracion.reject) # type: ignore
-        self.buttonBox.accepted.connect(Configuracion.aceptarguardar) # type: ignore
         self.sensibilidadLineEdit.editingFinished.connect(Configuracion.sensibilidadSelecField) # type: ignore
         self.sensibilidadSlider.sliderMoved['int'].connect(Configuracion.sensibilidadSelecSlider) # type: ignore
         self.ZMLineEdit.editingFinished.connect(Configuracion.ZMSelecField) # type: ignore
@@ -133,4 +131,4 @@ class Ui_Configuracion(object):
         Configuracion.setWindowTitle(_translate("Configuracion", "Configuración Global"))
         self.sensibilidadLabel.setText(_translate("Configuracion", "Sensibilidad del mouse :"))
         self.ZMLabel.setText(_translate("Configuracion", "Zona muerta :"))
-        self.notaZM.setText(_translate("Configuracion", "<html><head/><body><p align=\"justify\">*No se recomiendan valores de zona muerta menores a 100 o </p><p align=\"justify\">mayores a 450 por problemas de precisión de los joysticks</p></body></html>"))
+        self.notaZM.setText(_translate("Configuracion", "<html><head/><body><p align=\"justify\">*No se recomiendan valores de zona muerta menores a 100 por <br/>problemas de precisión de los joysticks</p></body></html>"))

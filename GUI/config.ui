@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>466</width>
-    <height>342</height>
+    <width>413</width>
+    <height>334</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -235,9 +235,6 @@
            <height>40</height>
           </size>
          </property>
-         <property name="maximum">
-          <number>500</number>
-         </property>
          <property name="orientation">
           <enum>Qt::Horizontal</enum>
          </property>
@@ -248,7 +245,7 @@
      <item>
       <widget class="QLabel" name="notaZM">
        <property name="text">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;justify&quot;&gt;*No se recomiendan valores de zona muerta menores a 100 o &lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;mayores a 450 por problemas de precisión de los joysticks&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;justify&quot;&gt;*No se recomiendan valores de zona muerta menores a 100 por &lt;br/&gt;problemas de precisión de los joysticks&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
        <property name="textFormat">
         <enum>Qt::AutoText</enum>
@@ -279,27 +276,11 @@
    <hints>
     <hint type="sourcelabel">
      <x>304</x>
-     <y>332</y>
+     <y>314</y>
     </hint>
     <hint type="destinationlabel">
-     <x>286</x>
-     <y>274</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>buttonBox</sender>
-   <signal>accepted()</signal>
-   <receiver>Configuracion</receiver>
-   <slot>aceptarguardar()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>384</x>
-     <y>332</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>479</x>
-     <y>201</y>
+     <x>331</x>
+     <y>273</y>
     </hint>
    </hints>
   </connection>
@@ -314,8 +295,8 @@
      <y>77</y>
     </hint>
     <hint type="destinationlabel">
-     <x>171</x>
-     <y>101</y>
+     <x>70</x>
+     <y>116</y>
     </hint>
    </hints>
   </connection>
@@ -326,7 +307,7 @@
    <slot>sensibilidadSelecSlider()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>295</x>
+     <x>330</x>
      <y>65</y>
     </hint>
     <hint type="destinationlabel">
@@ -358,11 +339,11 @@
    <slot>ZMSelecSlider()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>264</x>
+     <x>330</x>
      <y>142</y>
     </hint>
     <hint type="destinationlabel">
-     <x>426</x>
+     <x>396</x>
      <y>228</y>
     </hint>
    </hints>
@@ -374,12 +355,12 @@
    <slot>guardarConfig()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>334</x>
-     <y>322</y>
+     <x>269</x>
+     <y>310</y>
     </hint>
     <hint type="destinationlabel">
-     <x>105</x>
-     <y>282</y>
+     <x>153</x>
+     <y>273</y>
     </hint>
    </hints>
   </connection>
