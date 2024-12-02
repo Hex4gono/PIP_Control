@@ -5,12 +5,14 @@ from GUI.menu import Ui_MainWindow
 from arduino.comunicador import arduino
 from confirmarDialog import ConfirmarDialog
 from nombreDialog import Dialog
+from configuracionDialog import ConfiguracionDialog
 from PyQt5.QtCore import QTimer
 
 
 with open("data/controllers.json", "r") as file:
     global controles
     controles = dict(sorted(json.load(file).items()))
+    
 caracteres = ['mouseUp','mouseDown','mouseRight','mouseLeft','mouseClickLeft','mouseClickRight','shift','control','tab','printscreen','space','enter','up', 'down', 'right', 'left', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ',', '.', '-', '_', '!', '?', '@', '#', '$', '%', '^', '&', '*', '(', ')', '[', ']', '{', '}', '<', '>', '/', '\\', '|', '+', '=', ':', ';', '"', '\'','f1', 'f2', 'f3', 'f4', 'f5', 'f6', 'f7', 'f8', 'f9', 'f10', 'f11', 'f12']
 class MainWindow(QMainWindow):  #Clase MainWindow heredada de QMainWindow, que es una clase de PyQt para crear la ventana principal de la app.
     def __init__(self): #constructor method. Se ejuecuta cuando la instancia de la clase es creada.
@@ -18,6 +20,7 @@ class MainWindow(QMainWindow):  #Clase MainWindow heredada de QMainWindow, que e
         self.ui = Ui_MainWindow() #crea una instancia de Ui_MainWindow class, la cual es la definición de la interfaz del usuario para la ventana principal.
         self.ui.setupUi(self) #llama al método setupUi() de la instancia Ui_MainWindow, para setear los componenetes de la interfaz del usuario dentro de main window.
         self.ui.CerrarButton.setGeometry(271,1,161,23)
+        self.ui.ConfiguracionButton.setStyleSheet("background-image : url(assets/configGear.png);")
         # Haces un array con todos los caracteres seleccionables y despues la pones de accion en todos los combo box
         global widgets, comboBox
         self.controlActivado = False
@@ -54,6 +57,10 @@ class MainWindow(QMainWindow):  #Clase MainWindow heredada de QMainWindow, que e
     def eliminarControl(self):
         confirmar = ConfirmarDialog(controles, self.ui.controlesComboBox)
         confirmar.exec_()
+        
+    def abrirConfig(self):
+        config = ConfiguracionDialog()
+        config.exec_()      
         
     def desactivarControl(self):
         self.controlActivado = False
