@@ -48,6 +48,8 @@
         "XPosCar_2": "mouseUp",
         "YNegCar_2": "mouseUp",
         "YPosCar_2": "mouseUp",
+        "L3Sel": "mouseUp",
+        "R3Sel": "mouseUp",
         "Boton1Sel": "mouseUp",
         "Boton2Sel": "mouseUp",
         "Boton3Sel": "mouseUp",
@@ -55,8 +57,6 @@
         "Boton5Sel": "mouseUp",
         "Boton6Sel": "mouseUp",
         "Boton7Sel": "mouseUp",
-        "Boton8Sel": "mouseUp",
-        "L3Sel": "mouseUp",
-        "R3Sel": "mouseUp"
+        "Boton8Sel": "mouseUp"
     }
 }
