@@ -59,9 +59,10 @@ class MainWindow(QMainWindow):  #Clase MainWindow heredada de QMainWindow, que e
         confirmar.exec_()
         
     def abrirConfig(self):
-        config = ConfiguracionDialog()
-        config.exec_()      
-        
+        with open("data/controllers.json", "r") as file:
+            config = ConfiguracionDialog(json.load(file))
+            config.exec_()      
+
     def desactivarControl(self):
         self.controlActivado = False
         self.setEnabled(False)

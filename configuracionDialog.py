@@ -4,7 +4,7 @@ from GUI.config import Ui_Configuracion
 
 
 class ConfiguracionDialog(QDialog):
-    def __init__(self):
+    def __init__(self, configDict):
         super().__init__()
         self.ui = Ui_Configuracion()
         self.ui.setupUi(self)
