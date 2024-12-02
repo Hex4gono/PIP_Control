@@ -1,2 +1,0 @@
-terminar conexion arduino
-configuracion dialog

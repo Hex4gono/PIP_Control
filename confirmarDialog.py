@@ -1,11 +1,10 @@
 from PyQt5.QtWidgets import QDialog
 import json
-from GUI.promptconfirmar import Ui_ConfirmarDialog
 
 class ConfirmarDialog(QDialog):
     def __init__(self, controles, comboBox):
         super().__init__()
-
+        from GUI.promptconfirmar import Ui_ConfirmarDialog
         self.ui = Ui_ConfirmarDialog()
         self.ui.setupUi(self)
         self.setGeometry(300, 300, 300, 100)

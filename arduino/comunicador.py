@@ -1,6 +1,6 @@
 import serial # type: ignore
 import pyautogui # type: ignore
-from PyQt5.QtCore import QThread, pyqtSignal
+
 # aca voy a poner una clase para la conexion con arduino
 
 
@@ -10,10 +10,14 @@ class arduino:
         self.inputs = inputs
     
     def empezarComunicacion(self,port = 'COM1', baudRate = 9600):
-        try:
-            self.ser = serial.Serial(port,baudRate)
-        except Exception as error:
-            print(f"no se pudo abrir la comunicacion con puerto {port}, error: {error}")
+        while True:
+            try:
+                self.ser = serial.Serial(port,baudRate)
+            except Exception as error:
+                print(f"no se pudo abrir la comunicacion con puerto {port}, error: {error}")
+                port = input("Ingrese otro puerto : ")
+                continue
+            break
             
     def cerrarComunicacion(self):
         try: 
@@ -40,42 +44,31 @@ class arduino:
             if inputs[i]:
                 if "mouse" in inputKeys[i]:
                     # mover el mouse
-                    
                     if "ClickLeft" in inputKeys[i]:
                         # clickear
-                        pyautogui.mouseDown(button="left")
-                        
-                    if "ClickRight" in inputKeys[i]:
-                        pyautogui.mouseDown(button="right")
-                        
-                    # ineficiente pero tengo sueno
-                    if "Left" in inputKeys[i]:
-                        pyautogui.moveRel(-20)
+                        pyautogui.leftClick()
+                        continue
+                    
+                    elif "ClickRight" in inputKeys[i]:
+                        pyautogui.rightClick()
+                        continue
+                    
+                    else: # ineficiente pero tengo sueno
+                        if "Left" in inputKeys[i]:
+                            pyautogui.moveRel(-20)
                             
-                    if "Right" in inputKeys[i]:
-                        pyautogui.moveRel(20)
-                        
-                    if "Up" in inputKeys[i]:
-                        pyautogui.moveRel(yOffset=-20)
+                        if "Right" in inputKeys[i]:
+                            pyautogui.moveRel(20)
                             
-                    if "Down" in inputKeys[i]:
-                        pyautogui.moveRel(yOffset=20)
+                        if "Up" in inputKeys[i]:
+                            pyautogui.moveRel(yOffset=-20)
+                            
+                        if "Down" in inputKeys[i]:
+                            pyautogui.moveRel(yOffset=20)
                         
                 else:
                     # tecla comun
-                    pyautogui.keyDown(inputKeys[i])
-                    
-            elif "mouse" in inputKeys[i]:
-                if "ClickLeft" in inputKeys[i]:
-                    # clickear
-                    pyautogui.mouseUp(button="left")
-                        
-                if "ClickRight" in inputKeys[i]:
-                    pyautogui.mouseUp(button="right")
-                    
-            else:
-                pyautogui.keyUp(inputKeys[i])
-                    
+                    pyautogui.press(inputKeys[i])
         
         
     

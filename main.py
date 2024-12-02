@@ -5,14 +5,10 @@ from GUI.menu import Ui_MainWindow
 from arduino.comunicador import arduino
 from confirmarDialog import ConfirmarDialog
 from nombreDialog import Dialog
-from configuracionDialog import ConfiguracionDialog
-from PyQt5.QtCore import QTimer
-
 
 with open("data/controllers.json", "r") as file:
     global controles
     controles = dict(sorted(json.load(file).items()))
-    
 caracteres = ['mouseUp','mouseDown','mouseRight','mouseLeft','mouseClickLeft','mouseClickRight','shift','control','tab','printscreen','space','enter','up', 'down', 'right', 'left', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ',', '.', '-', '_', '!', '?', '@', '#', '$', '%', '^', '&', '*', '(', ')', '[', ']', '{', '}', '<', '>', '/', '\\', '|', '+', '=', ':', ';', '"', '\'','f1', 'f2', 'f3', 'f4', 'f5', 'f6', 'f7', 'f8', 'f9', 'f10', 'f11', 'f12']
 class MainWindow(QMainWindow):  #Clase MainWindow heredada de QMainWindow, que es una clase de PyQt para crear la ventana principal de la app.
     def __init__(self): #constructor method. Se ejuecuta cuando la instancia de la clase es creada.
@@ -20,24 +16,15 @@ class MainWindow(QMainWindow):  #Clase MainWindow heredada de QMainWindow, que e
         self.ui = Ui_MainWindow() #crea una instancia de Ui_MainWindow class, la cual es la definición de la interfaz del usuario para la ventana principal.
         self.ui.setupUi(self) #llama al método setupUi() de la instancia Ui_MainWindow, para setear los componenetes de la interfaz del usuario dentro de main window.
         self.ui.CerrarButton.setGeometry(271,1,161,23)
-        self.ui.ConfiguracionButton.setStyleSheet("background-image : url(assets/configGear.png);")
         # Haces un array con todos los caracteres seleccionables y despues la pones de accion en todos los combo box
-        global widgets, comboBox
-        self.controlActivado = False
+        global widgets, comboBox, controlActivado
         widgets = [self.ui.XNegCar,self.ui.XPosCar,self.ui.YNegCar,self.ui.YPosCar,self.ui.XNegCar_2,self.ui.XPosCar_2,self.ui.YNegCar_2,self.ui.YPosCar_2,self.ui.L3Sel,self.ui.R3Sel,self.ui.Boton1Sel,self.ui.Boton2Sel,self.ui.Boton3Sel,self.ui.Boton4Sel,self.ui.Boton5Sel,self.ui.Boton6Sel,self.ui.Boton7Sel,self.ui.Boton8Sel]
         for i in widgets:
             i.addItems(caracteres)
             i.setMaxVisibleItems(10)
         comboBox = self.ui.controlesComboBox
         comboBox.addItems(controles.keys())
-        
-        self.timer = QTimer()
-        if self.controlActivado:
-            self.timer.timeout.connect(self.refrescarArduino)  # execute `display_time`
-        self.timer.setInterval(16)  # 1000ms = 1s
-        self.timer.start()
-        
-        
+
     def sortearControl(self):
         orden_inverso = self.ui.SortButton.text() == "A-Z"
         self.ui.SortButton.setText("Z-A" if orden_inverso else "A-Z")
@@ -58,13 +45,8 @@ class MainWindow(QMainWindow):  #Clase MainWindow heredada de QMainWindow, que e
         confirmar = ConfirmarDialog(controles, self.ui.controlesComboBox)
         confirmar.exec_()
         
-    def abrirConfig(self):
-        with open("data/config.json", "r") as file:
-            config = ConfiguracionDialog(json.load(file))
-            config.exec_()      
-
     def desactivarControl(self):
-        self.controlActivado = False
+        controlActivado = False
         self.setEnabled(False)
         self.ui.AceptarButton.setEnabled(True)
         plaquinia.cerrarComunicacion()
@@ -73,7 +55,8 @@ class MainWindow(QMainWindow):  #Clase MainWindow heredada de QMainWindow, que e
         
     def aplicarControl(self):
 
-        self.controlActivado = True
+        contolActivado = True
+        self.setEnabled(False)
         self.ui.CerrarButton.setEnabled(True)
         temp = []
         for e in widgets:
@@ -83,11 +66,6 @@ class MainWindow(QMainWindow):  #Clase MainWindow heredada de QMainWindow, que e
         plaquinia.empezarComunicacion()
         for e in widgets:
             e.setEnabled(False)
-      
-    def refrescarArduino(self):
-          if self.controlActivado:
-                plaquinia.simularTeclas(plaquinia.recibirTeclas())
-              
         
     def buscarControl(self):
         aBuscar = self.ui.searchLineEdit.text()
@@ -108,7 +86,7 @@ if __name__ == "__main__": #checkea si el script está siendo ejecutado como el 
     window = MainWindow() #crea una intancia de MainWindow 
     window.show()   # IMPORTANT!!!!! la ventanas estan ocultas por defecto.
     sys.exit(app.exec_()) # Start the event loop.
-    
+
 # event loop?    eee no se
 """
 while True:

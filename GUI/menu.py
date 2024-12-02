@@ -86,13 +86,6 @@ class Ui_MainWindow(object):
         self.guardarButton.setFont(font)
         self.guardarButton.setObjectName("guardarButton")
         self.ConfigBox.addWidget(self.guardarButton)
-        self.ConfiguracionButton = QtWidgets.QPushButton(self.verticalLayoutWidget_5)
-        self.ConfiguracionButton.setMaximumSize(QtCore.QSize(40, 40))
-        font = QtGui.QFont()
-        font.setPointSize(13)
-        self.ConfiguracionButton.setFont(font)
-        self.ConfiguracionButton.setObjectName("ConfiguracionButton")
-        self.ConfigBox.addWidget(self.ConfiguracionButton)
         self.AppLayout.addLayout(self.ConfigBox)
         spacerItem = QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding)
         self.AppLayout.addItem(spacerItem)
@@ -125,6 +118,7 @@ class Ui_MainWindow(object):
         font = QtGui.QFont()
         font.setPointSize(13)
         self.L3Sel.setFont(font)
+        self.L3Sel.setMaxVisibleItems(2)
         self.L3Sel.setObjectName("L3Sel")
         self.JSI.addWidget(self.L3Sel, 1, 1, 1, 1)
         self.XNegCar = QtWidgets.QComboBox(self.verticalLayoutWidget_5)
@@ -356,7 +350,6 @@ class Ui_MainWindow(object):
         self.CerrarButton.released.connect(MainWindow.desactivarControl) # type: ignore
         self.SortButton.released.connect(MainWindow.sortearControl) # type: ignore
         self.searchLineEdit.textChanged['QString'].connect(MainWindow.buscarControl) # type: ignore
-        self.ConfiguracionButton.released.connect(MainWindow.abrirConfig) # type: ignore
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -366,7 +359,6 @@ class Ui_MainWindow(object):
         self.borrarButton.setText(_translate("MainWindow", "Eliminar"))
         self.cargarButton.setText(_translate("MainWindow", "Cargar"))
         self.guardarButton.setText(_translate("MainWindow", "Guardar Actual"))
-        self.ConfiguracionButton.setText(_translate("MainWindow", " "))
         self.label.setText(_translate("MainWindow", "Joystick Izquierdo"))
         self.label_2.setText(_translate("MainWindow", "Joystick Derecho"))
         self.Boton1txt.setText(_translate("MainWindow", "Boton 1"))
