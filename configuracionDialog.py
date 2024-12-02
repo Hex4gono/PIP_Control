@@ -23,13 +23,18 @@ class ConfiguracionDialog(QDialog):
     def sensibilidadSelecField(self):
         txt = self.ui.sensibilidadLineEdit # para abreviar nomas
         try:
+            
             self.sens = int(txt.text())
         except ValueError:
+            
             txt.setText(str(self.sens))
             return
         
-        if self.sens < 1 or self.sens > 200:
-            return
+        if self.sens < 5:
+            txt.setText("5")
+
+        if self.sens > 200:
+            txt.setText("200")
         
         self.ui.sensibilidadSlider.setValue(self.sens)
             
