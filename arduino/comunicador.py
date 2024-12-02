@@ -1,13 +1,19 @@
 import serial # type: ignore
 import pyautogui # type: ignore
 from PyQt5.QtCore import QThread, pyqtSignal
+import json
 # aca voy a poner una clase para la conexion con arduino
 
 
 class arduino:
+    
     def __init__(self, inputs):
         # como argumento recibe una lista de los inputs
         self.inputs = inputs
+        with open(r"data/config.json","r") as file:
+            config = json.load(file).items()
+            self.sens = config[0]
+            self.zm = config[1]
     
     def empezarComunicacion(self,port = 'COM1', baudRate = 9600):
         try:
