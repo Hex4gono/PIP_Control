@@ -59,7 +59,7 @@ class MainWindow(QMainWindow):  #Clase MainWindow heredada de QMainWindow, que e
         confirmar.exec_()
         
     def abrirConfig(self):
-        with open("data/controllers.json", "r") as file:
+        with open("data/config.json", "r") as file:
             config = ConfiguracionDialog(json.load(file))
             config.exec_()      
 

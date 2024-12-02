@@ -135,10 +135,13 @@
           </font>
          </property>
          <property name="minimum">
-          <number>1</number>
+          <number>5</number>
          </property>
          <property name="maximum">
-          <number>20</number>
+          <number>200</number>
+         </property>
+         <property name="singleStep">
+          <number>1</number>
          </property>
          <property name="orientation">
           <enum>Qt::Horizontal</enum>
@@ -235,6 +238,12 @@
            <height>40</height>
           </size>
          </property>
+         <property name="minimum">
+          <number>1</number>
+         </property>
+         <property name="maximum">
+          <number>550</number>
+         </property>
          <property name="orientation">
           <enum>Qt::Horizontal</enum>
          </property>
@@ -245,7 +254,7 @@
      <item>
       <widget class="QLabel" name="notaZM">
        <property name="text">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;justify&quot;&gt;*No se recomiendan valores de zona muerta menores a 100 por &lt;br/&gt;problemas de precisión de los joysticks&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p align=&quot;justify&quot;&gt;*No se recomiendan valores de zona muerta menores a 80 o&lt;/p&gt;&lt;p align=&quot;justify&quot;&gt;mayores a 450 por problemas de precisión de los joysticks&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
        </property>
        <property name="textFormat">
         <enum>Qt::AutoText</enum>
