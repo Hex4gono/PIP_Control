@@ -4,3 +4,4 @@
 /entorno
 *.pyc
 *.pyc
+*__pycache__
