@@ -33,7 +33,7 @@ class MainWindow(QMainWindow):  #Clase MainWindow heredada de QMainWindow, que e
         
         self.timer = QTimer()
         if self.controlActivado:
-            self.timer.timeout.connect(self.refrescarArduino)  # execute `display_time`
+            self.timer.timeout.connect(self.refrescarArduino())  # execute `display_time`
         self.timer.setInterval(16)  # 1000ms = 1s
         self.timer.start()
         
@@ -65,7 +65,7 @@ class MainWindow(QMainWindow):  #Clase MainWindow heredada de QMainWindow, que e
 
     def desactivarControl(self):
         self.controlActivado = False
-        self.setEnabled(False)
+        self.ui.CerrarButton.setEnabled(False)
         self.ui.AceptarButton.setEnabled(True)
         plaquinia.cerrarComunicacion()
         for e in widgets:
@@ -75,6 +75,7 @@ class MainWindow(QMainWindow):  #Clase MainWindow heredada de QMainWindow, que e
 
         self.controlActivado = True
         self.ui.CerrarButton.setEnabled(True)
+        self.ui.AceptarButton.setEnabled(False)
         temp = []
         for e in widgets:
             temp.append(e.currentText()) # agarro todos los textos de los combobox

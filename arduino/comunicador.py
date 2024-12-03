@@ -11,9 +11,10 @@ class arduino:
         # como argumento recibe una lista de los inputs
         self.inputs = inputs
         with open(r"data/config.json","r") as file:
-            config = json.load(file).items()
-            self.sens = config[0]
-            self.zm = config[1]
+            # no le gusta a json que cargue el archivo 2 veces
+            a = json.load(file)
+            self.sens = a["sensibilidad"]
+            self.zm = a["zona muerta"]
     
     def empezarComunicacion(self,port = 'COM1', baudRate = 9600):
         try:
@@ -29,6 +30,7 @@ class arduino:
             
     def recibirTeclas(self):
         # [l3,r3,botones(1-8),joysticks]
+        print("recibiendo")
         self.teclasASimular = []
         self.teclasList = list(self.ser.readLine())
         for tecla in self.teclasList:
@@ -42,6 +44,7 @@ class arduino:
     
     
     def simularTeclas(self, inputs, inputKeys):
+        print("simulando")
         for i in range(0, len(inputKeys)):
             if inputs[i]:
                 if "mouse" in inputKeys[i]:
