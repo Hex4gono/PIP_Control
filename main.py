@@ -3,7 +3,6 @@ from PyQt5.QtWidgets import QApplication, QMainWindow
 from PyQt5.QtCore import QThread, pyqtSignal
 from PyQt5.QtGui import QIcon
 import json
-import time
 from GUI.menu import Ui_MainWindow
 from confirmarDialog import ConfirmarDialog
 from nombreDialog import Dialog

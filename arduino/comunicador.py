@@ -16,9 +16,9 @@ class arduino:
             self.sens = a["sensibilidad"]
             self.zm = a["zona muerta"]
     
-    def empezarComunicacion(self,port = 'COM1', baudRate = 9600):
+    def empezarComunicacion(self,port = 'COM1', baudRate = 19200):
         try:
-            self.ser = serial.Serial(port,baudRate)
+            self.ser = serial.Serial(port,baudRate,timeout=None)
         except FileNotFoundError as error:
             print(f"no se pudo abrir la comunicacion, conecte el arduino a {port}, error : {error}")
             raise
@@ -33,41 +33,47 @@ class arduino:
             
     def recibirTeclas(self):
         # [l3,r3,botones(1-8),joysticks]
-                
         self.teclasASimular = []
-        print(self.ser.read_until(b"stop"))
-        self.teclasList = self.ser.read_until(b"stop")
-        self.teclasList = self.teclasList[self.teclasList.find(b"start") + 5 : self.teclasList.find(b"stop")]
-        self.teclasList = self.teclasList.strip().decode("utf-8",'ignore').split(",")
-        print(self.teclasList)
+        if self.ser.in_waiting > 0:
+            print(self.ser.read_until(b"|s"))
+            self.teclasList = self.ser.read_until(b"|s")
+            self.teclasList = self.teclasList[self.teclasList.find(b"s|") + 2 : self.teclasList.find(b"|s")]
+            self.teclasList = self.teclasList.strip().decode("utf-8",'ignore').split(",")
+            print(self.teclasList)
         
-        for i in range(0, len(self.teclasList)):
-            # digital
-            try:
-                int(self.teclasList[i])
-            except:
-                print("WHAAAAAT THEEE HEEEELLLLL OMAAGAAAAAD")
-            if i < 4:
-                # analog
-                if int(self.teclasList[i]) > self.zm:
-                    self.teclasASimular.append(False)
-                    self.teclasASimular.append(True)
-                  
-                elif int(self.teclasList[i]) < -self.zm:
-                    self.teclasASimular.append(True)
-                    self.teclasASimular.append(False)
-
-                else:
-                    self.teclasASimular.append(False)
-                    self.teclasASimular.append(False)
-            else:
+            for i in range(0, len(self.teclasList)):
                 # digital
-                if self.teclasList[i] == "1":
-                    self.teclasASimular.append(True)
-                # fake
+                try:
+                    int(self.teclasList[i])
+                except:
+                    print("WHAAAAAT THEEE HEEEELLLLL OMAAGAAAAAD")
+                if i < 4:
+                    # analog
+                    if int(self.teclasList[i]) > self.zm:
+                        self.teclasASimular.append(False)
+                        self.teclasASimular.append(True)
+                    
+                    elif int(self.teclasList[i]) < -self.zm:
+                        self.teclasASimular.append(True)
+                        self.teclasASimular.append(False)
+
+                    else:
+                        self.teclasASimular.append(False)
+                        self.teclasASimular.append(False)
                 else:
-                    self.teclasASimular.append(False)        
+                    # digital
+                    if self.teclasList[i] == "1":
+                        self.teclasASimular.append(True)
+                    # fake
+                    else:
+                      self.teclasASimular.append(False)        
+        else:
+            for i in range(0, len(self.inputs)):
+                self.teclasASimular.append(False)
+                
         return self.teclasASimular
+        
+         
         
         
     
