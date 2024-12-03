@@ -15,7 +15,7 @@ void setup()
 
 void loop() 
 {
-    String data;
+    String data = "start";
   //String data = "[";
 
 
@@ -40,7 +40,7 @@ void loop()
 
     if (i < sizeof(analogPins) / sizeof(analogPins[0]) -1);
     {
-      data += " "; 
+      data += ","; 
     }
   }
 
@@ -57,27 +57,14 @@ void loop()
 
     if (i < sizeof(digitalPins) / sizeof(digitalPins[0]) -1)
     {
-      data += " "; 
+      data += ","; 
     }
   }
-
+  data += "stop";
   //data += "]";
   Serial.println(data);
-  delay(20);
   int valueA0 = analogRead(A0); // Leer A0
   int valueA1 = analogRead(A1); // Leer A1
-/*
-// debug
-  Serial.print("A0: ");
-  Serial.print(1023 - valueA0);
-  Serial.print(" | A1: ");
-  Serial.println(1023 - valueA1);
 
- // A3 dejo de funcionar de la maldita nada asi que tuve que remplazarlo
-  Serial.print("A2: ");
-  Serial.print(analogRead(A2));
-  Serial.print(" | A4: ");
-  Serial.println(analogRead(A4));
-*/
-  delay(30); 
+  delay(50); 
 }

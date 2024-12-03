@@ -1,6 +1,7 @@
 import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow
 from PyQt5.QtCore import QThread, pyqtSignal
+from PyQt5.QtGui import QIcon
 import json
 import time
 from GUI.menu import Ui_MainWindow
@@ -9,8 +10,6 @@ from nombreDialog import Dialog
 from configuracionDialog import ConfiguracionDialog
 from arduino.comunicador import arduino
 
-global FPS 
-FPS = 20
 
 class ArduinoThread(QThread):
     
@@ -30,7 +29,7 @@ class ArduinoThread(QThread):
             except Exception as e:
                 print(f"Error en la comunicación con Arduino: {e}")
                 self.running = False
-            time.sleep(1/FPS)
+
 
     def stop(self):
         """Detener el hilo."""
@@ -43,7 +42,8 @@ class MainWindow(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         self.ui.CerrarButton.setGeometry(271, 1, 161, 23)
-
+        self.ui.ConfiguracionButton.setIcon(QIcon("assets/configGear.png"))
+        
         global widgets, comboBox
         self.controlActivado = False
         widgets = [self.ui.XNegCar, self.ui.XPosCar, self.ui.YNegCar, self.ui.YPosCar,

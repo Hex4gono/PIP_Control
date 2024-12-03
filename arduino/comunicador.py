@@ -33,11 +33,14 @@ class arduino:
             
     def recibirTeclas(self):
         # [l3,r3,botones(1-8),joysticks]
+                
         self.teclasASimular = []
-        print(self.ser.readline())
-        self.teclasList = self.ser.readline().decode('utf-8').strip().replace(" ","").split(",")
+        print(self.ser.read_until(b"stop"))
+        self.teclasList = self.ser.read_until(b"stop")
+        self.teclasList = self.teclasList[self.teclasList.find(b"start") + 5 : self.teclasList.find(b"stop")]
+        self.teclasList = self.teclasList.strip().decode("utf-8",'ignore').split(",")
         print(self.teclasList)
-        print(len(self.teclasList))
+        
         for i in range(0, len(self.teclasList)):
             # digital
             try:
@@ -46,7 +49,6 @@ class arduino:
                 print("WHAAAAAT THEEE HEEEELLLLL OMAAGAAAAAD")
             if i < 4:
                 # analog
-                print(f"soy analog {i}")
                 if int(self.teclasList[i]) > self.zm:
                     self.teclasASimular.append(False)
                     self.teclasASimular.append(True)
@@ -66,7 +68,8 @@ class arduino:
                 else:
                     self.teclasASimular.append(False)        
         return self.teclasASimular
-    
+        
+        
     
     def simularTeclas(self, teclasBool):
         teclasKeys = self.inputs  # se me chispoteo asi que tengo que poner esto para no complicarme tanto
@@ -76,16 +79,16 @@ class arduino:
                 if "mouse" in teclasKeys[i]:
                     # mover el mouse
                     if "Left" in teclasKeys[i]:
-                        pyautogui.moveRel(-self.sens)
+                        pyautogui.moveRel(-self.sens/10)
                             
                     if "Right" in teclasKeys[i]:
-                        pyautogui.moveRel(self.sens)
+                        pyautogui.moveRel(self.sens/10)
                         
                     if "Up" in teclasKeys[i]:
-                        pyautogui.moveRel(0, -self.sens)
+                        pyautogui.moveRel(0, -self.sens/10)
                             
                     if "Down" in teclasKeys[i]:
-                        pyautogui.moveRel(0, self.sens)
+                        pyautogui.moveRel(0, self.sens/10)
                         
                 elif "clickLeft" in teclasKeys[i]:
                         # clickear
