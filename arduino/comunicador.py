@@ -35,33 +35,42 @@ class arduino:
         # [l3,r3,botones(1-8),joysticks]
         self.teclasASimular = []
         print(self.ser.readline())
-        self.teclasList = list(self.ser.readline())
+        self.teclasList = self.ser.readline().decode('utf-8').strip().replace(" ","").split(",")
         print(self.teclasList)
-        for tecla in self.teclasList:
+        print(len(self.teclasList))
+        for i in range(0, len(self.teclasList)):
             # digital
-            if tecla == 1:
-                self.teclasASimular.append(True)
-                continue
-            # analog
-            elif tecla > self.zm:
-                self.teclasASimular.append(False)
-                self.teclasASimular.append(True)
-                continue
-                
-            elif tecla < -self.zm:
-                self.teclasASimular.append(True)
-                self.teclasASimular.append(False)
-                continue   
-            # fake
+            try:
+                int(self.teclasList[i])
+            except:
+                print("WHAAAAAT THEEE HEEEELLLLL OMAAGAAAAAD")
+            if i < 4:
+                # analog
+                print(f"soy analog {i}")
+                if int(self.teclasList[i]) > self.zm:
+                    self.teclasASimular.append(False)
+                    self.teclasASimular.append(True)
+                  
+                elif int(self.teclasList[i]) < -self.zm:
+                    self.teclasASimular.append(True)
+                    self.teclasASimular.append(False)
+
+                else:
+                    self.teclasASimular.append(False)
+                    self.teclasASimular.append(False)
             else:
-                self.teclasASimular.append(False)
-                
+                # digital
+                if self.teclasList[i] == "1":
+                    self.teclasASimular.append(True)
+                # fake
+                else:
+                    self.teclasASimular.append(False)        
         return self.teclasASimular
     
     
     def simularTeclas(self, teclasBool):
         teclasKeys = self.inputs  # se me chispoteo asi que tengo que poner esto para no complicarme tanto
-        print(f"\n{teclasBool},\n{teclasKeys}")
+        print(f"\n{teclasBool}\n{teclasKeys}")
         for i in range(0, len(teclasKeys)):
             if teclasBool[i]:
                 if "mouse" in teclasKeys[i]:

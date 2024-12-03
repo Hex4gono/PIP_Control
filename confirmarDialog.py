@@ -13,8 +13,11 @@ class ConfirmarDialog(QDialog):
         self.comboBox = comboBox
 
     def eliminacionConfirmada(self):
-        self.controles.pop(self.comboBox.currentText())
-        with open("data/controllers.json", 'w') as file:
-            json.dump(self.controles, file, indent=4)
-        self.comboBox.clear()
-        self.comboBox.addItems(self.controles.keys())
+        try:
+            self.controles.pop(self.comboBox.currentText())
+            with open("data/controllers.json", 'w') as file:
+                json.dump(self.controles, file, indent=4)
+            self.comboBox.clear()
+            self.comboBox.addItems(self.controles.keys())
+        except AttributeError:
+            pass

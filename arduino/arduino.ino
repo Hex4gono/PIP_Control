@@ -2,20 +2,21 @@
 int digitalPins[] = {2, 3, 4, 5, 6, 7, 8, 9, 10, 11};
 int analogPins[] = {A0, A1, A2, A4}; //a3 no anda
 
-
+ 
 void setup() 
 {
   Serial.begin(9600);
   
-  for (int i = 0; i < sizeof(digitalPins); i++) 
-  {
-    pinMode(digitalPins[i], INPUT_PULLUP);
-  }
+    for (int i = 0; i < sizeof(digitalPins); i++) 
+    {
+        pinMode(digitalPins[i], INPUT_PULLUP);
+    }
 }
 
 void loop() 
 {
-  String data = "[";
+    String data;
+  //String data = "[";
 
 
 
@@ -39,7 +40,7 @@ void loop()
 
     if (i < sizeof(analogPins) / sizeof(analogPins[0]) -1);
     {
-      data += ", "; 
+      data += " "; 
     }
   }
 
@@ -56,11 +57,11 @@ void loop()
 
     if (i < sizeof(digitalPins) / sizeof(digitalPins[0]) -1)
     {
-      data += ", "; 
+      data += " "; 
     }
   }
 
-  data += "]";
+  //data += "]";
   Serial.println(data);
   delay(20);
   int valueA0 = analogRead(A0); // Leer A0
