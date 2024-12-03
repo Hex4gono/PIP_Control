@@ -19,6 +19,9 @@ class arduino:
     def empezarComunicacion(self,port = 'COM1', baudRate = 9600):
         try:
             self.ser = serial.Serial(port,baudRate)
+        except FileNotFoundError as error:
+            print(f"no se pudo abrir la comunicacion, conecte el arduino a {port}, error : {error}")
+            raise
         except Exception as error:
             print(f"no se pudo abrir la comunicacion con puerto {port}, error: {error}")
             
@@ -30,60 +33,69 @@ class arduino:
             
     def recibirTeclas(self):
         # [l3,r3,botones(1-8),joysticks]
-        print("recibiendo")
         self.teclasASimular = []
-        self.teclasList = list(self.ser.readLine())
+        self.teclasList = list(self.ser.readline())
+        print(self.teclasList)
         for tecla in self.teclasList:
+            # digital
             if tecla == 1:
                 self.teclasASimular.append(True)
-            elif abs(tecla) > 400:
+            # analog
+            elif tecla > self.zm:
+                self.teclasASimular.append(False)
                 self.teclasASimular.append(True)
+                
+            elif tecla < -self.zm:
+                self.teclasASimular.append(True)
+                self.teclasASimular.append(False)   
+            # fake
             else:
                 self.teclasASimular.append(False)
-        return self.teclasASimular, self.teclasList
+                
+        return self.teclasASimular
     
     
-    def simularTeclas(self, inputs, inputKeys):
-        print("simulando")
-        for i in range(0, len(inputKeys)):
-            if inputs[i]:
-                if "mouse" in inputKeys[i]:
+    def simularTeclas(self, teclasBool):
+        teclasKeys = self.inputs  # se me chispoteo asi que tengo que poner esto para no complicarme tanto
+        print(f"\n{teclasBool},\n{teclasKeys}")
+        for i in range(0, len(teclasKeys)):
+            if teclasBool[i]:
+                if "mouse" in teclasKeys[i]:
                     # mover el mouse
-                    
-                    if "ClickLeft" in inputKeys[i]:
+                    if "Left" in teclasKeys[i]:
+                        pyautogui.moveRel(-self.sens)
+                            
+                    if "Right" in teclasKeys[i]:
+                        pyautogui.moveRel(self.sens)
+                        
+                    if "Up" in teclasKeys[i]:
+                        pyautogui.moveRel(0, -self.sens)
+                            
+                    if "Down" in teclasKeys[i]:
+                        pyautogui.moveRel(0, self.sens)
+                        
+                elif "clickLeft" in teclasKeys[i]:
                         # clickear
-                        pyautogui.mouseDown(button="left")
+                    pyautogui.mouseDown(button="left")
                         
-                    if "ClickRight" in inputKeys[i]:
-                        pyautogui.mouseDown(button="right")
-                        
-                    # ineficiente pero tengo sueno
-                    if "Left" in inputKeys[i]:
-                        pyautogui.moveRel(-20)
-                            
-                    if "Right" in inputKeys[i]:
-                        pyautogui.moveRel(20)
-                        
-                    if "Up" in inputKeys[i]:
-                        pyautogui.moveRel(yOffset=-20)
-                            
-                    if "Down" in inputKeys[i]:
-                        pyautogui.moveRel(yOffset=20)
-                        
+                elif "clickRight" in teclasKeys[i]:
+                    pyautogui.mouseDown(button="right")    
+                    
                 else:
                     # tecla comun
-                    pyautogui.keyDown(inputKeys[i])
-                    
-            elif "mouse" in inputKeys[i]:
-                if "ClickLeft" in inputKeys[i]:
-                    # clickear
-                    pyautogui.mouseUp(button="left")
-                        
-                if "ClickRight" in inputKeys[i]:
-                    pyautogui.mouseUp(button="right")
+                    pyautogui.keyDown(teclasKeys[i])
                     
             else:
-                pyautogui.keyUp(inputKeys[i])
+                if "mouse" in teclasKeys[i]:
+                    if "ClickLeft" in teclasKeys[i]:
+                        # clickear
+                        pyautogui.mouseUp(button="left")
+                        
+                    if "ClickRight" in teclasKeys[i]:
+                        pyautogui.mouseUp(button="right")
+                    
+                else:
+                    pyautogui.keyUp(teclasKeys[i])
                     
         
         

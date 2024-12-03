@@ -6,7 +6,6 @@ from arduino.comunicador import arduino
 from confirmarDialog import ConfirmarDialog
 from nombreDialog import Dialog
 from configuracionDialog import ConfiguracionDialog
-from PyQt5.QtCore import QTimer
 
 
 with open("data/controllers.json", "r") as file:
@@ -14,6 +13,11 @@ with open("data/controllers.json", "r") as file:
     controles = dict(sorted(json.load(file).items()))
     
 caracteres = ['mouseUp','mouseDown','mouseRight','mouseLeft','mouseClickLeft','mouseClickRight','shift','control','tab','printscreen','space','enter','up', 'down', 'right', 'left', 'a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z', '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', ',', '.', '-', '_', '!', '?', '@', '#', '$', '%', '^', '&', '*', '(', ')', '[', ']', '{', '}', '<', '>', '/', '\\', '|', '+', '=', ':', ';', '"', '\'','f1', 'f2', 'f3', 'f4', 'f5', 'f6', 'f7', 'f8', 'f9', 'f10', 'f11', 'f12']
+
+
+
+
+
 class MainWindow(QMainWindow):  #Clase MainWindow heredada de QMainWindow, que es una clase de PyQt para crear la ventana principal de la app.
     def __init__(self): #constructor method. Se ejuecuta cuando la instancia de la clase es creada.
         super().__init__() #llama al constructor de la clase QMainWindow, para inicializar las funcionalidades básicas de la ventana principal de la app.
@@ -31,11 +35,6 @@ class MainWindow(QMainWindow):  #Clase MainWindow heredada de QMainWindow, que e
         comboBox = self.ui.controlesComboBox
         comboBox.addItems(controles.keys())
         
-        self.timer = QTimer()
-        if self.controlActivado:
-            self.timer.timeout.connect(self.refrescarArduino())  # execute `display_time`
-        self.timer.setInterval(16)  # 1000ms = 1s
-        self.timer.start()
         
         
     def sortearControl(self):

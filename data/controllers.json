@@ -58,5 +58,25 @@
         "Boton6Sel": "mouseUp",
         "Boton7Sel": "mouseUp",
         "Boton8Sel": "mouseUp"
+    },
+    "mouse test": {
+        "XNegCar": "mouseLeft",
+        "XPosCar": "mouseRight",
+        "YNegCar": "mouseDown",
+        "YPosCar": "mouseUp",
+        "XNegCar_2": "mouseLeft",
+        "XPosCar_2": "mouseRight",
+        "YNegCar_2": "mouseDown",
+        "YPosCar_2": "mouseUp",
+        "L3Sel": "clickLeft",
+        "R3Sel": "mouseRight",
+        "Boton1Sel": "mouseUp",
+        "Boton2Sel": "mouseUp",
+        "Boton3Sel": "mouseUp",
+        "Boton4Sel": "mouseUp",
+        "Boton5Sel": "mouseUp",
+        "Boton6Sel": "mouseUp",
+        "Boton7Sel": "mouseUp",
+        "Boton8Sel": "mouseUp"
     }
 }
