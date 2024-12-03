@@ -34,20 +34,24 @@ class arduino:
     def recibirTeclas(self):
         # [l3,r3,botones(1-8),joysticks]
         self.teclasASimular = []
+        print(self.ser.readline())
         self.teclasList = list(self.ser.readline())
         print(self.teclasList)
         for tecla in self.teclasList:
             # digital
             if tecla == 1:
                 self.teclasASimular.append(True)
+                continue
             # analog
             elif tecla > self.zm:
                 self.teclasASimular.append(False)
                 self.teclasASimular.append(True)
+                continue
                 
             elif tecla < -self.zm:
                 self.teclasASimular.append(True)
-                self.teclasASimular.append(False)   
+                self.teclasASimular.append(False)
+                continue   
             # fake
             else:
                 self.teclasASimular.append(False)

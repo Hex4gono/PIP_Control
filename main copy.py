@@ -2,37 +2,40 @@ import sys
 from PyQt5.QtWidgets import QApplication, QMainWindow
 from PyQt5.QtCore import QThread, pyqtSignal
 import json
+import time
 from GUI.menu import Ui_MainWindow
 from confirmarDialog import ConfirmarDialog
 from nombreDialog import Dialog
 from configuracionDialog import ConfiguracionDialog
 from arduino.comunicador import arduino
 
-
+global FPS 
+FPS = 1
 
 class ArduinoThread(QThread):
     
-    datos = pyqtSignal(list, list)  # a este coso no le gusta que lo llamen adentro del constructor
+    datos = pyqtSignal(list)  # a este coso no le gusta que lo llamen adentro del constructor
     def __init__(self, arduinoInst):
         super().__init__()
         self.arduino = arduinoInst
         self.running = False
 
     def run(self):
-        """Lógica del hilo: recibir datos continuamente mientras esté activo."""
+        # recibe datos continuamente
         self.running = True
         while self.running:
             try:
-                teclasASimular, teclasList = self.arduino.recibirTeclas()
-                self.datos.emit(teclasASimular, teclasList)
+                teclasASimular = self.arduino.recibirTeclas()
+                self.datos.emit(teclasASimular)
             except Exception as e:
                 print(f"Error en la comunicación con Arduino: {e}")
                 self.running = False
+            time.sleep(FPS)
 
     def stop(self):
         """Detener el hilo."""
         self.running = False
-        self.wait()
+        
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -40,7 +43,6 @@ class MainWindow(QMainWindow):
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
         self.ui.CerrarButton.setGeometry(271, 1, 161, 23)
-        self.ui.ConfiguracionButton.setStyleSheet("background-image : url(assets/configGear.png);") # ni me anda we
 
         global widgets, comboBox
         self.controlActivado = False
@@ -81,7 +83,7 @@ class MainWindow(QMainWindow):
         self.arduinoInst.empezarComunicacion()
 
         self.arduino_thread = ArduinoThread(self.arduinoInst)
-        self.arduino_thread.datos.connect(self.recibirDatosArduino())
+        self.arduino_thread.datos.connect(self.recibirDatosArduino)
         self.arduino_thread.start()
 
         for widget in widgets:
@@ -89,7 +91,8 @@ class MainWindow(QMainWindow):
 
     def cargarControl(self):
         controlActual = controles.get(self.ui.controlesComboBox.currentText())
-        claves = ["XNegCar", "XPosCar", "YNegCar", "YPosCar","XNegCar_2", "XPosCar_2", "YNegCar_2", "YPosCar_2","L3Sel","R3Sel","Boton1Sel", "Boton2Sel", "Boton3Sel", "Boton4Sel","Boton5Sel", "Boton6Sel", "Boton7Sel", "Boton8Sel"]
+        claves = ["XNegCar", "XPosCar", "YNegCar", "YPosCar","XNegCar_2", "XPosCar_2", "YNegCar_2", "YPosCar_2","L3Sel","R3Sel",
+                  "Boton1Sel","Boton2Sel", "Boton3Sel", "Boton4Sel","Boton5Sel", "Boton6Sel", "Boton7Sel", "Boton8Sel"]
         for i in range(len(widgets)):
             widgets[i].setCurrentText(controlActual.get(claves[i]))
     
@@ -137,9 +140,10 @@ class MainWindow(QMainWindow):
         for widget in widgets:
             widget.setEnabled(True)
 
-    def recibirDatosArduino(self, teclasASimular, teclasList):
+    def recibirDatosArduino(self):
         """Procesar los datos recibidos del hilo de Arduino."""
-        self.arduinoInst.simularTeclas(teclasASimular, teclasList)
+        print(self.arduinoInst.recibirTeclas())
+        self.arduinoInst.simularTeclas(self.arduinoInst.recibirTeclas())
 
 
 if __name__ == "__main__":

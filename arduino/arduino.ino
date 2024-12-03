@@ -49,9 +49,9 @@ void loop()
     // invierte los valores por el pullup
     if ((digitalRead(digitalPins[i]) == HIGH)) 
     {
-      data += "0";
+      data += false;
     } else {
-      data += "1";  
+      data += true;  
     }
 
     if (i < sizeof(digitalPins) / sizeof(digitalPins[0]) -1)
