@@ -4,7 +4,7 @@ from PyQt5.QtCore import QThread, pyqtSignal
 import json
 # aca voy a poner una clase para la conexion con arduino
 
-
+pyautogui.FAILSAFE = False
 class arduino:
     
     def __init__(self, inputs):
@@ -40,8 +40,7 @@ class arduino:
             
             while b"|s" not in buffer:
                 buffer += self.ser.read(self.ser.in_waiting)
-                print(buffer)
-            print(buffer)  
+
             buffer = buffer[buffer.find(b"s|")+ 2 : buffer.find(b"|s")]
             self.teclasList = buffer.strip().decode("utf-8",'ignore').split(",")
             print(self.teclasList)
@@ -86,7 +85,7 @@ class arduino:
         else:
             for i in range(0, len(self.inputs)):
                 self.teclasASimular.append(False)
-                
+        #print(self.teclasASimular)
         return self.teclasASimular
         
          
@@ -103,16 +102,16 @@ class arduino:
                         # mover el mouse
                         try:
                             if "Left" in teclasKeys[i]:
-                                pyautogui.moveRel(-self.sens/10)
+                                pyautogui.moveRel(-self.sens/20)
                                     
                             if "Right" in teclasKeys[i]:
-                                pyautogui.moveRel(self.sens/10)
+                                pyautogui.moveRel(self.sens/20)
                                 
                             if "Up" in teclasKeys[i]:
-                                pyautogui.moveRel(yOffset = -self.sens/10)
+                                pyautogui.moveRel(None, -self.sens/20)
                                     
                             if "Down" in teclasKeys[i]:
-                                pyautogui.moveRel(yOffset = self.sens/10)
+                                pyautogui.moveRel(None, self.sens/20)
                         except pyautogui.FailSafeException:
                             pass
                         
