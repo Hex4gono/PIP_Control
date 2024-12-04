@@ -3,6 +3,7 @@ import pyautogui # type: ignore
 from PyQt5.QtCore import QThread, pyqtSignal
 import json
 
+
 # aca voy a poner una clase para la conexion con arduino
 
 pyautogui.FAILSAFE = False
@@ -12,7 +13,7 @@ class arduino:
         # como argumento recibe una lista de los inputs
         self.inputs = inputs
         with open(r"data/config.json","r") as file:
-            # no le gusta a json que cargue el archivo 2 veces
+              # no le gusta a json que cargue el archivo 2 veces
             a = json.load(file)
             self.sens = a["sensibilidad"]
             self.zm = a["zona muerta"]
