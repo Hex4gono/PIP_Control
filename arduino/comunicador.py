@@ -1,6 +1,5 @@
 import serial # type: ignore
 import pyautogui # type: ignore
-from PyQt5.QtCore import QThread, pyqtSignal
 import json
 
 
@@ -30,7 +29,7 @@ class arduino:
     def cerrarComunicacion(self):
         try: 
             self.ser.close()
-        except NameError:
+        except NameError or AttributeError:
             print("Error: se trato de cerrar un puerto no abierto previamente")
             
     def recibirTeclas(self):
