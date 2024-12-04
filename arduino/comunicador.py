@@ -149,8 +149,6 @@ class arduino:
                         pyautogui.keyUp(teclasKeys[i], _pause = False)
 
             except IndexError:
-                print(f"{len(self.inputs)},\n{len(teclasBool)}")
-                print("indexError")
                 continue
                     
         

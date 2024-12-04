@@ -13,6 +13,4 @@ PyScreeze==1.0.1
 pyserial==3.5
 python3-xlib==0.15
 pytweening==1.2.0
-PyYAML==6.0.2
-six==1.16.0
-xlib==0.21
+
