@@ -2,6 +2,7 @@ import serial # type: ignore
 import pyautogui # type: ignore
 from PyQt5.QtCore import QThread, pyqtSignal
 import json
+
 # aca voy a poner una clase para la conexion con arduino
 
 pyautogui.FAILSAFE = False
@@ -43,9 +44,6 @@ class arduino:
 
             buffer = buffer[buffer.find(b"s|")+ 2 : buffer.find(b"|s")]
             self.teclasList = buffer.strip().decode("utf-8",'ignore').split(",")
-            print(self.teclasList)
-
-
 
 
             """
@@ -53,9 +51,8 @@ class arduino:
             self.teclasList = self.teclasList[self.teclasList.find(b"s|") + 2 : self.teclasList.find(b"|s")]
             self.teclasList = self.teclasList.strip().decode("utf-8",'ignore').split(",")
             """
-
             #self.teclasList = self.ser.readline().strip().decode("utf-8",'ignore').split(",")
-        
+            
             for i in range(0, len(self.teclasList)):
                 # digital
                 try:
@@ -82,10 +79,24 @@ class arduino:
                     # fake
                     else:
                       self.teclasASimular.append(False)        
+             
         else:
-            for i in range(0, len(self.inputs)):
-                self.teclasASimular.append(False)
-        #print(self.teclasASimular)
+            try:
+                if not self.ultimo:
+                    for i in range(0, len(self.inputs)):
+                        self.teclasASimular.append(False)
+                else:
+                    self.teclasASimular = self.ultimo
+            except AttributeError:
+                for i in range(0, len(self.inputs)):
+                    self.teclasASimular.append(False)
+                
+        self.ultimo = self.teclasASimular        
+        """
+        print(self.teclasASimular)
+        for e in self.teclasASimular:
+            print(e)
+        """
         return self.teclasASimular
         
          
@@ -100,46 +111,42 @@ class arduino:
                 if teclasBool[i]:
                     if "mouse" in teclasKeys[i]:
                         # mover el mouse
-                        try:
                             if "Left" in teclasKeys[i]:
-                                pyautogui.moveRel(-self.sens/20)
+                                pyautogui.moveRel(-self.sens/40, None, _pause = False)
                                     
                             if "Right" in teclasKeys[i]:
-                                pyautogui.moveRel(self.sens/20)
+                                pyautogui.moveRel(self.sens/40, None, _pause = False)
                                 
                             if "Up" in teclasKeys[i]:
-                                pyautogui.moveRel(None, -self.sens/20)
+                                pyautogui.moveRel(None, -self.sens/40, _pause = False)
                                     
                             if "Down" in teclasKeys[i]:
-                                pyautogui.moveRel(None, self.sens/20)
-                        except pyautogui.FailSafeException:
-                            pass
+                                pyautogui.moveRel(None, self.sens/40, _pause = False)
+
                         
                     elif "clickLeft" in teclasKeys[i]:
                             # clickear
-                        pyautogui.mouseDown(button="left")
+                        pyautogui.mouseDown(button="left", _pause = False)
                             
                     elif "clickRight" in teclasKeys[i]:
-                        pyautogui.mouseDown(button="right")    
+                        pyautogui.mouseDown(button="right", _pause = False)    
                         
                     else:
                         # tecla comun
-                        pyautogui.keyDown(teclasKeys[i])
-                        
+                        pyautogui.keyDown(teclasKeys[i], _pause = False)     
                 else:
                     if "mouse" in teclasKeys[i]:
                         if "ClickLeft" in teclasKeys[i]:
                             # clickear
-                            pyautogui.mouseUp(button="left")
+                            pyautogui.mouseUp(button="left", _pause = False)
                             
                         if "ClickRight" in teclasKeys[i]:
-                            pyautogui.mouseUp(button="right")
+                            pyautogui.mouseUp(button="right", _pause = False)
                         
                     else:
-                        try:
-                            pyautogui.keyUp(teclasKeys[i])
-                        except pyautogui.FailSafeException:
-                            pass
+
+                        pyautogui.keyUp(teclasKeys[i], _pause = False)
+
             except IndexError:
                 print(f"{len(self.inputs)},\n{len(teclasBool)}")
                 print("indexError")

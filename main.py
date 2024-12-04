@@ -29,7 +29,7 @@ class ArduinoThread(QThread):
             except Exception as e:
                 print(f"Error en la comunicación con Arduino: {e}")
                 self.running = False
-            time.sleep(0.025)
+            time.sleep(0.01)
 
 
     def stop(self):
