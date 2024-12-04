@@ -20,7 +20,6 @@ class MainWindow(QMainWindow):  #Clase MainWindow heredada de QMainWindow, que e
         self.ui = Ui_MainWindow() #crea una instancia de Ui_MainWindow class, la cual es la definición de la interfaz del usuario para la ventana principal.
         self.ui.setupUi(self) #llama al método setupUi() de la instancia Ui_MainWindow, para setear los componenetes de la interfaz del usuario dentro de main window.
         self.ui.CerrarButton.setGeometry(271,1,161,23)
-        self.ui.ConfiguracionButton.setStyleSheet("background-image : url(assets/configGear.png);")
         # Haces un array con todos los caracteres seleccionables y despues la pones de accion en todos los combo box
         global widgets, comboBox
         self.controlActivado = False

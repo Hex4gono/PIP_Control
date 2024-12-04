@@ -170,7 +170,17 @@
           </font>
          </property>
          <property name="text">
-          <string> </string>
+          <string/>
+         </property>
+         <property name="icon">
+          <iconset>
+           <normaloff>../assets/configGear.png</normaloff>../assets/configGear.png</iconset>
+         </property>
+         <property name="iconSize">
+          <size>
+           <width>40</width>
+           <height>40</height>
+          </size>
          </property>
         </widget>
        </item>

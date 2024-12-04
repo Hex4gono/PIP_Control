@@ -10,9 +10,10 @@ class arduino:
         # como argumento recibe una lista de los inputs
         self.inputs = inputs
         with open(r"data/config.json","r") as file:
-            config = json.load(file).items()
-            self.sens = config[0]
-            self.zm = config[1]
+            a = json.load(file)
+            self.sens = a["sensibilidad"]
+            self.zm = a["zona muerta"]
+    
     
     def empezarComunicacion(self,port = 'COM1', baudRate = 9600):
         try:
