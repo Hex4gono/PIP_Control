@@ -64,7 +64,6 @@ void loop()
   data += "|s";
   //data += "]";
   Serial.println(data);
-  int valueA0 = analogRead(A0); // Leer A0
   
 
 
