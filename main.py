@@ -3,6 +3,7 @@ from PyQt5.QtWidgets import QApplication, QMainWindow
 from PyQt5.QtCore import QThread, pyqtSignal
 from PyQt5.QtGui import QIcon
 import json
+import time
 from GUI.menu import Ui_MainWindow
 from confirmarDialog import ConfirmarDialog
 from nombreDialog import Dialog
@@ -28,6 +29,7 @@ class ArduinoThread(QThread):
             except Exception as e:
                 print(f"Error en la comunicación con Arduino: {e}")
                 self.running = False
+            time.sleep(0.05)
 
 
     def stop(self):
@@ -146,8 +148,6 @@ class MainWindow(QMainWindow):
             widget.setEnabled(True)
 
     def recibirDatosArduino(self):
-        """Procesar los datos recibidos del hilo de Arduino."""
-        print(self.arduinoInst.recibirTeclas())
         self.arduinoInst.simularTeclas(self.arduinoInst.recibirTeclas())
 
 

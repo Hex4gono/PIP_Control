@@ -15,7 +15,8 @@ void setup()
 
 void loop() 
 {
-    String data = "start";
+  //String data = "";
+  String data = "s|";
   //String data = "[";
 
 
@@ -60,11 +61,12 @@ void loop()
       data += ","; 
     }
   }
-  data += "stop";
+  data += "|s";
   //data += "]";
   Serial.println(data);
   int valueA0 = analogRead(A0); // Leer A0
-  int valueA1 = analogRead(A1); // Leer A1
+  
+
 
   delay(50); 
 }
